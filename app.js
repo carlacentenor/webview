@@ -63,18 +63,18 @@ let decrementTotal = (price, idNumberBox) => {
 };
 
 let templateProducts = (element, container) => {
-  let template = ` <div class="row p-2">
+  let template = ` <div class="row p-2 border-bot">
   <div class="col-8">
-  <p>${element.nombre}</p>
-  <p>${element.description}</p>
+  <p class="mb-0">${element.nombre}</p>
+  <p class="f14">${element.description}</p>
   </div>
   <div class="col-4 row">
     <div class="col-4">
-      <button class="increment" data-precio=${element.precio}>+</button>
+      <button class="increment btn-subt" data-precio=${element.precio}>+</button>
     </div>
-    <div class="col-4" id=${element.title}>0</div>
+    <div class="col-4 text-center"><p id=${element.title}>0</p></div>
     <div class="col-4">
-      <button class="decrement" data-precio=${element.precio}>-</button>
+      <button class="decrement btn-subt" data-precio=${element.precio}>-</button>
     </div>
   </div>
 </div>`;

@@ -3,3 +3,34 @@
     color: white;
     font-size: 20px;
 }
+.f14{
+    font-size: 12px;
+}
+
+.subtitle{
+    color: #BB141A;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.btn-general{
+text-align: center;
+background-color: #777777;
+color: white;
+border: 1px solid #777777;
+padding: 4px 8px;
+font-size: 18px;
+}
+
+.btn-subt{
+    text-align: center;
+background-color: #B7B7B7;
+color: white;
+border: 1px solid #B7B7B7;
+padding: 4px 8px;
+font-size: 18px;
+}
+
+.border-bot{
+    border-bottom: 1px solid #B7B7B7;
+}

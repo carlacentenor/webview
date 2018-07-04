@@ -4,11 +4,13 @@ let showTotal = $('#total');
 const containerBig = $('.container-bigpizza');
 const containerFamily = $('.container-bigfamily');
 const containerAdicion = $('.container-adicional');
-// 
+const containerBebidas = $('.container-bebidas');
+
 $.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', function (data) {
   let pizzaBig = data.products.pizzas.grandes;
   let pizzaFamily = data.products.pizzas.familiares;
   let adicionales = data.products.adicionales;
+  let drinks = data.products.bebidas;
   pizzaBig.forEach(element => {
     templateProducts(element, containerBig);
   });
@@ -17,6 +19,9 @@ $.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', functi
   });
   adicionales.forEach(element => {
     templateProducts(element, containerAdicion);
+  });
+  drinks.forEach(element => {
+    templateProducts(element, containerBebidas);
   });
 
 });
@@ -58,8 +63,11 @@ let decrementTotal = (price, idNumberBox) => {
 };
 
 let templateProducts = (element, container) => {
-  let template = ` <div class="row">
-  <div class="col-8">${element.nombre}</div>
+  let template = ` <div class="row p-2">
+  <div class="col-8">
+  <p>${element.nombre}</p>
+  <p>${element.description}</p>
+  </div>
   <div class="col-4 row">
     <div class="col-4">
       <button class="increment" data-precio=${element.precio}>+</button>

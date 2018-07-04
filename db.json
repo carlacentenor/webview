@@ -6,7 +6,7 @@
             "id2": "1gd",
             "nombre": "Americana",
             "title": "americanagrande",
-            "ingredientes": "Jamón y queso mozzarella",
+            "description": "Jamón y queso mozzarella",
             "precio": 40.90
           },
           {
@@ -14,7 +14,7 @@
             "id2": "2gd",
             "nombre": "Pepperoni",
             "title": "pepperonigrande",
-            "ingredientes": "Pepperoni y queso mozzarella",
+            "description": "Pepperoni y queso mozzarella",
             "precio": 40.90
           },
           {
@@ -22,7 +22,7 @@
             "id2": "3gd",
             "nombre": "Vegetariana",
             "title": "vegetarianagrande",
-            "ingredientes": "Tomates, champiñones, cebolla, pimientos, aceitunas negras y queso mozzarella",
+            "description": "Tomates, champiñones, cebolla, pimientos, aceitunas negras y queso mozzarella",
             "precio": 40.90
           },
           {
@@ -30,7 +30,7 @@
             "id2": "4gd",
             "nombre": "Hawaiana",
             "title": "hawaianagrande",
-            "ingredientes": "Jamón, piña y queso mozzarella extra",
+            "description": "Jamón, piña y queso mozzarella extra",
             "precio": 45.90
           },
           {
@@ -38,7 +38,7 @@
             "id2": "5gd",
             "nombre": "Hawaiian Chicken BBQ",
             "title": "hawaiianchickenbbqgrande",
-            "ingredientes": "Deliciosa base de salsa BBQ, pollo, tocino, cebolla blanca, piña y queso mozzarella",
+            "description": "Deliciosa base de salsa BBQ, pollo, tocino, cebolla blanca, piña y queso mozzarella",
             "precio": 55.90
           },
           {
@@ -46,7 +46,7 @@
             "id2": "6gd",
             "nombre": "All the Meats",
             "title": "allthemeatsgrande",
-            "ingredientes": "Pepperoni, salchicha de cerdo, jamón, tocino, carne de res y queso mozzarella",
+            "description": "Pepperoni, salchicha de cerdo, jamón, tocino, carne de res y queso mozzarella",
             "precio": 55.90
           },
           {
@@ -54,7 +54,7 @@
             "id2": "7gd",
             "nombre": "The Works",
             "title": "theworksgrande",
-            "ingredientes": "Pepperoni, salchicha italiana, jamón, pimientos verdes, cebolla blanca, champiñones, aceitunas negras y queso mozzarella",
+            "description": "Pepperoni, salchicha italiana, jamón, pimientos verdes, cebolla blanca, champiñones, aceitunas negras y queso mozzarella",
             "precio": 55.90
           }
 
@@ -64,7 +64,7 @@
             "id2": "1fd",
             "nombre": "Americana",
             "title": "americanafamiliar",
-            "ingredientes": "Jamón y queso mozzarella",
+            "description": "Jamón y queso mozzarella",
             "precio": 50.90
           },
           {
@@ -72,7 +72,7 @@
             "id2": "2fd",
             "nombre": "Pepperoni",
             "title": "pepperonifamiliar",
-            "ingredientes": "pepperoni y queso mozzarella",
+            "description": "pepperoni y queso mozzarella",
             "precio": 50.90
           },
           {
@@ -80,7 +80,7 @@
             "id2": "3fd",
             "nombre": "Vegetariana",
             "title": "vegetarianafamiliar",
-            "ingredientes": "Tomates, champiñones, cebolla, pimientos, aceitunas negras y queso mozzarella",
+            "description": "Tomates, champiñones, cebolla, pimientos, aceitunas negras y queso mozzarella",
             "precio": 50.90
           },
           {
@@ -88,7 +88,7 @@
             "id2": "4fd",
             "nombre": "Hawaiana",
             "title": "hawaianafamiliar",
-            "ingredientes": "Jamón, piña y queso mozzarella extra",
+            "description": "Jamón, piña y queso mozzarella extra",
             "precio": 55.90
           },
           {
@@ -96,7 +96,7 @@
             "id2": "5fd",
             "nombre": "Hawaiian Chicken BBQ",
             "title": "hawaiianchickenbbqfamiliar",
-            "ingredientes": "Deliciosa base de salsa BBQ, pollo, tocino, cebolla blanca, piña y queso mozzarella",
+            "description": "Deliciosa base de salsa BBQ, pollo, tocino, cebolla blanca, piña y queso mozzarella",
             "precio": 65.90
           },
           {
@@ -104,7 +104,7 @@
             "id2": "6fd",
             "nombre": "All the Meats",
             "title": "allthemeatsfamiliar",
-            "ingredientes": "Pepperoni, salchicha de cerdo, jamón, tocino, carne de res y queso mozzarella",
+            "description": "Pepperoni, salchicha de cerdo, jamón, tocino, carne de res y queso mozzarella",
             "precio": 65.90
           },
           {
@@ -112,7 +112,7 @@
             "id2": "7fd",
             "nombre": "The Works",
             "title": "theworksfamiliar",
-            "ingredientes": "Pepperoni, salchicha italiana, jamón, pimientos verdes, cebolla blanca, champiñones, aceitunas negras y queso mozzarella",
+            "description": "Pepperoni, salchicha italiana, jamón, pimientos verdes, cebolla blanca, champiñones, aceitunas negras y queso mozzarella",
             "precio": 65.90
           }
 
@@ -123,7 +123,7 @@
         "id2": "1ad",
         "nombre": "Pepperoni-rolls",
         "title": "pepperonirolls",
-        "descripción": "6 riquísimos rolls de pepperoni enrollados con nuestra masa especial",
+        "description": "6 riquísimos rolls de pepperoni enrollados con nuestra masa especial",
         "precio": 10.90
       },
       {
@@ -131,7 +131,7 @@
         "id2": "2ad",
         "nombre": "Wings",
         "title": "wings",
-        "descripción": "6 Irresistibles alitas de pollo asadas al horno, servidas con nuestras inigualables salsa BBQ",
+        "description": "6 Irresistibles alitas de pollo asadas al horno, servidas con nuestras inigualables salsa BBQ",
         "precio": 12.90
       }],
       "bebidas": [{
@@ -139,7 +139,7 @@
           "id2": "1bd",
           "nombre": "Coca Cola Original",
           "title": "cocacolaoriginal",
-          "descripción": "Coca Cola sabor original de 1,5L ",
+          "description": "Coca Cola sabor original de 1,5L ",
           "precio": 7.90
         },
         {
@@ -147,7 +147,7 @@
           "id2": "2bd",
           "nombre": "Coca Cola Sin Azúcar",
           "title": "cocacolasinazucar",
-          "descripción": "Coca Cola sin azúcar de 1,5L ",
+          "description": "Coca Cola sin azúcar de 1,5L ",
           "precio": 7.90
         },
         {
@@ -155,7 +155,7 @@
           "id2": "3bd",
           "nombre": "Inca Kola Original",
           "title": "inkacolaoriginal",
-          "descripción": "Inca Kola sabor original de 1,5L ",
+          "description": "Inca Kola sabor original de 1,5L ",
           "precio": 7.90
         },
         {
@@ -163,7 +163,7 @@
           "id2": "4bd",
           "nombre": "Inca Kola Sin Azúcar",
           "title": "inkacolasinazucar",
-          "descripción": "Inca Kola sin azúcar de 1,5L ",
+          "description": "Inca Kola sin azúcar de 1,5L ",
           "precio": 7.90
         }
 

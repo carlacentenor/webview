@@ -3,12 +3,14 @@
       "pizzas": {
         "grandes": [{
             "id": "1g",
+            "id2" : "1gd",
             "nombre": "Pizza Americana",
             "ingredientes": "Jamón y queso mozzarella",
             "precio": 40.90
           },
           {
             "id": "2g",
+            "id2" : "2gd",
             "nombre": "Pizza Pepperoni",
             "ingredientes": "Jamón y queso mozzarella",
             "precio": 40.90
@@ -17,12 +19,14 @@
         ],
         "familiares": [{
             "id": "1f",
+            "id2" : "1fd",
             "nombre": "Pizza Americana",
             "ingredientes": "Jamón y queso mozzarella",
             "precio": 50.90
           },
           {
             "id": "2f",
+            "id2" : "2fd",
             "nombre": "Pizza Pepperoni",
             "ingredientes": "pepperoni y queso mozzarella",
             "precio": 50.90
@@ -32,6 +36,7 @@
       },
       "adicionales": [{
         "id": "1a",
+        "id2" : "1ad",
         "nombre": "Pepperoni rolls",
         "descripción": "6 riquísimos rolls de pepperoni enrollados con nuestra masa especial",
         "precio": 40.90

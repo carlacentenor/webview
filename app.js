@@ -6,8 +6,23 @@ let totalFinal = 0;
 localStorage.setItem('totalFinal', totalFinal);
 let showTotal = $('#total');
 
-$.getJSON('../products.json', function(resp) {
-  console.log(resp)
+$.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', function(data) {
+   let pizzaBig = data.products.pizzas.grandes;
+  
+   pizzaBig.forEach(element => {
+      let template = ` <div class="row">
+      <div class="col-8">${element.nombre}</div>
+      <div class="col-4 row">
+        <div class="col-4">
+          <button id=${element.id} data-precio=${element.precio}>+</button>
+        </div>
+        <div class="col-4" id=${element.nombre}>0</div>
+        <div class="col-4">
+          <button id=${element.id2} data-precio=${element.precio}>-</button>
+        </div>
+      </div>
+    </div>`
+   });
  });
 
 

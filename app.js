@@ -6,6 +6,12 @@ let totalFinal = 0;
 localStorage.setItem('totalFinal', totalFinal);
 let showTotal = $('#total');
 
+$.getJSON('../products.json', function(resp) {
+  console.log(resp)
+ });
+
+
+
 $(document).on('click', '#increment', function () {
   let totalPedido =localStorage.getItem('totalFinal');
   let number = numberPizza.text();
@@ -49,3 +55,5 @@ $(document).on('click', '#decrement2', function () {
   localStorage.setItem('totalFinal', final.toFixed(1));
   showTotal.text(localStorage.getItem('totalFinal'))
 });
+
+

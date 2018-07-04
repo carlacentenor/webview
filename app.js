@@ -8,7 +8,7 @@ let showTotal = $('#total');
 
 $.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', function(data) {
    let pizzaBig = data.products.pizzas.grandes;
-  
+  const container = $('.container-bigpizza');
    pizzaBig.forEach(element => {
       let template = ` <div class="row">
       <div class="col-8">${element.nombre}</div>
@@ -21,8 +21,10 @@ $.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', functi
           <button id=${element.id2} data-precio=${element.precio}>-</button>
         </div>
       </div>
-    </div>`
+    </div>`;
+    container.append(template);
    });
+   
  });
 
 

@@ -72,7 +72,7 @@ let templateProducts = (element, container) => {
     <div class="col-4">
       <button class="increment btn-subt" data-precio=${element.precio}>+</button>
     </div>
-    <div class="col-4 text-center"><p id=${element.title}>0</p></div>
+    <div class="col-4" id=${element.title} >0</div>
     <div class="col-4">
       <button class="decrement btn-subt" data-precio=${element.precio}>-</button>
     </div>

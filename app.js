@@ -109,6 +109,7 @@ let incrementTotal = (price, idNumberBox, name) => {
   let final = parseFloat(price) + parseFloat(totalPedido);
   localStorage.setItem('totalFinal', final.toFixed(1));
   showTotal.text(localStorage.getItem('totalFinal'));
+  
   arrayBigPizza.push(name);
   localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
 };

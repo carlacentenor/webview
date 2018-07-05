@@ -53,15 +53,17 @@ $.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', functi
 $(document).on('click', '.increment', function () {
   let price = $(this).data('precio');
   let namePizza = $(this).data('name');
+  let type = $(this).data('type');
   let idNumber = $(this).context.parentElement.nextElementSibling.id;
-  incrementTotal(price, idNumber, namePizza);
+  incrementTotal(price, idNumber, namePizza,type);
 })
 
 $(document).on('click', '.decrement', function () {
   let price = $(this).data('precio');
   let namePizza = $(this).data('name');
+  let type = $(this).data('type');
   let idNumber = $(this).context.parentElement.previousElementSibling.id;
-  decrementTotal(price, idNumber,namePizza);
+  decrementTotal(price, idNumber,namePizza,type);
 })
 
 //Eventos de Big Pizza and Family Pizza
@@ -101,7 +103,7 @@ confirmFamily.on('click', function () {
 
 
 // Funciones de Incrementar/Decrementar Precio
-let incrementTotal = (price, idNumberBox, name) => {
+let incrementTotal = (price, idNumberBox, name,type) => {
   let totalPedido = localStorage.getItem('totalFinal');
   let number = $(`#${idNumberBox}`).text();
   number = parseInt(number) + 1;
@@ -109,12 +111,18 @@ let incrementTotal = (price, idNumberBox, name) => {
   let final = parseFloat(price) + parseFloat(totalPedido);
   localStorage.setItem('totalFinal', final.toFixed(1));
   showTotal.text(localStorage.getItem('totalFinal'));
-  
+if(type == 'grande'){
   arrayBigPizza.push(name);
   localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
+}
+if(type == 'familiar'){
+  arrayFamilyPizza.push(name);
+  localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
+}
+ 
 };
 
-let decrementTotal = (price, idNumberBox,name) => {
+let decrementTotal = (price, idNumberBox,name,type) => {
   
   let totalPedido = localStorage.getItem('totalFinal');
   let number = $(`#${idNumberBox}`).text();
@@ -137,10 +145,10 @@ let templateProducts = (element, container) => {
     <p class="f14">${element.description}</p>
   </div>
   <div class="col-2 text-right">
-    <button class="increment btn-subt" data-name=${element.nombre} data-precio=${element.precio}>+</button>
+    <button class="increment btn-subt" data-name=${element.nombre} data-precio=${element.precio} data-type=${element.type} >+</button>
   </div>
   <div class="col-1" id=${element.title} >0</div>
-  <div class="col-2"><button class="decrement btn-subt" data-name=${element.nombre} data-precio=${element.precio}>-</button>
+  <div class="col-2"><button class="decrement btn-subt" data-name=${element.nombre} data-precio=${element.precio} data-type=${element.type}>-</button>
   
   </div>  
   <div class="border-bot "></div>

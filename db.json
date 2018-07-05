@@ -7,7 +7,8 @@
             "nombre": "Americana",
             "title": "americanagrande",
             "description": "Jamón y queso mozzarella",
-            "precio": 40.90
+            "precio": 40.90,
+            "type" : "grande"
           },
           {
             "id": "2g",
@@ -15,7 +16,8 @@
             "nombre": "Pepperoni",
             "title": "pepperonigrande",
             "description": "Pepperoni y queso mozzarella",
-            "precio": 40.90
+            "precio": 40.90,
+            "type" : "grande"
           },
           {
             "id": "3g",
@@ -23,7 +25,8 @@
             "nombre": "Vegetariana",
             "title": "vegetarianagrande",
             "description": "Tomates, champiñones, cebolla, pimientos, aceitunas negras y queso mozzarella",
-            "precio": 40.90
+            "precio": 40.90,
+            "type" : "grande"
           },
           {
             "id": "4g",
@@ -31,7 +34,8 @@
             "nombre": "Hawaiana",
             "title": "hawaianagrande",
             "description": "Jamón, piña y queso mozzarella extra",
-            "precio": 45.90
+            "precio": 45.90,
+            "type" : "grande"
           },
           {
             "id": "5g",
@@ -39,7 +43,8 @@
             "nombre": "Hawaiian Chicken BBQ",
             "title": "hawaiianchickenbbqgrande",
             "description": "Deliciosa base de salsa BBQ, pollo, tocino, cebolla blanca, piña y queso mozzarella",
-            "precio": 55.90
+            "precio": 55.90,
+            "type" : "grande"
           },
           {
             "id": "6g",
@@ -47,7 +52,8 @@
             "nombre": "All the Meats",
             "title": "allthemeatsgrande",
             "description": "Pepperoni, salchicha de cerdo, jamón, tocino, carne de res y queso mozzarella",
-            "precio": 55.90
+            "precio": 55.90,
+            "type" : "grande"
           },
           {
             "id": "7g",
@@ -55,7 +61,8 @@
             "nombre": "The Works",
             "title": "theworksgrande",
             "description": "Pepperoni, salchicha italiana, jamón, pimientos verdes, cebolla blanca, champiñones, aceitunas negras y queso mozzarella",
-            "precio": 55.90
+            "precio": 55.90,
+            "type" : "grande"
           }
 
         ],
@@ -65,7 +72,8 @@
             "nombre": "Americana",
             "title": "americanafamiliar",
             "description": "Jamón y queso mozzarella",
-            "precio": 50.90
+            "precio": 50.90,
+            "type" : "familiar"
           },
           {
             "id": "2f",
@@ -73,7 +81,8 @@
             "nombre": "Pepperoni",
             "title": "pepperonifamiliar",
             "description": "pepperoni y queso mozzarella",
-            "precio": 50.90
+            "precio": 50.90,
+            "type" : "familiar"
           },
           {
             "id": "3f",
@@ -81,7 +90,8 @@
             "nombre": "Vegetariana",
             "title": "vegetarianafamiliar",
             "description": "Tomates, champiñones, cebolla, pimientos, aceitunas negras y queso mozzarella",
-            "precio": 50.90
+            "precio": 50.90,
+            "type" : "familiar"
           },
           {
             "id": "4f",
@@ -89,7 +99,8 @@
             "nombre": "Hawaiana",
             "title": "hawaianafamiliar",
             "description": "Jamón, piña y queso mozzarella extra",
-            "precio": 55.90
+            "precio": 55.90,
+            "type" : "familiar"
           },
           {
             "id": "5f",
@@ -97,7 +108,8 @@
             "nombre": "Hawaiian Chicken BBQ",
             "title": "hawaiianchickenbbqfamiliar",
             "description": "Deliciosa base de salsa BBQ, pollo, tocino, cebolla blanca, piña y queso mozzarella",
-            "precio": 65.90
+            "precio": 65.90,
+            "type" : "familiar"
           },
           {
             "id": "6f",
@@ -105,7 +117,8 @@
             "nombre": "All the Meats",
             "title": "allthemeatsfamiliar",
             "description": "Pepperoni, salchicha de cerdo, jamón, tocino, carne de res y queso mozzarella",
-            "precio": 65.90
+            "precio": 65.90,
+            "type" : "familiar"
           },
           {
             "id": "7f",
@@ -113,7 +126,8 @@
             "nombre": "The Works",
             "title": "theworksfamiliar",
             "description": "Pepperoni, salchicha italiana, jamón, pimientos verdes, cebolla blanca, champiñones, aceitunas negras y queso mozzarella",
-            "precio": 65.90
+            "precio": 65.90,
+            "type" : "familiar"
           }
 
         ]

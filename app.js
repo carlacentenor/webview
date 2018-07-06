@@ -56,8 +56,9 @@ $(document).on('click', '.increment', function () {
   let price = $(this).data('precio');
   let namePizza = $(this).data('name');
   let type = $(this).data('type');
+  let detail = $(this).data('detail');
   let idNumber = $(this).context.parentElement.nextElementSibling.id;
-  incrementTotal(price, idNumber, namePizza, type);
+  incrementTotal(price, idNumber, namePizza, type, detail);
 
 })
 
@@ -65,9 +66,10 @@ $(document).on('click', '.decrement', function () {
   let price = $(this).data('precio');
   let namePizza = $(this).data('name');
   let type = $(this).data('type');
+  let detail = $(this).data('detail');
   let idNumber = $(this).context.parentElement.previousElementSibling.id;
 
-  decrementTotal(price, idNumber, namePizza, type);
+  decrementTotal(price, idNumber, namePizza, type, detail);
 
 
 })
@@ -97,7 +99,7 @@ confirmBig.on('click', function () {
   $('#total-count-big').text(countPizzaBig.length);
   bigPizzaSection.hide();
   containerPrincipal.show();
-  $('#resumen-pedido-total').val(countPizzaBig)
+  $('#resumen-pedido-big-total').val(countPizzaBig.join("\n"))
 });
 
 confirmFamily.on('click', function () {
@@ -105,12 +107,13 @@ confirmFamily.on('click', function () {
   $('#total-count-family').text(countPizzaFamily.length);
   familyPizzaSection.hide();
   containerPrincipal.show();
+  $('#resumen-pedido-family-total').val(countPizzaFamily.join("\n"))
 });
 
 
 
 // Funciones de Incrementar/Decrementar Precio
-let incrementTotal = (price, idNumberBox, name, type) => {
+let incrementTotal = (price, idNumberBox, name, type,detail) => {
   let totalPedido = localStorage.getItem('totalFinal');
   let number = $(`#${idNumberBox}`).text();
   number = parseInt(number) + 1;
@@ -119,25 +122,29 @@ let incrementTotal = (price, idNumberBox, name, type) => {
   localStorage.setItem('totalFinal', final.toFixed(1));
   showTotal.text(localStorage.getItem('totalFinal'));
   if (type == 'grande') {
-    arrayBigPizza.push({'name':name , 'type':type ,'price':price});
+    arrayBigPizza.push(detail);
     localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
   }
   if (type == 'familiar') {
-    arrayFamilyPizza.push({'name':name , 'type':type ,'price':price});
+    arrayFamilyPizza.push(detail);
     localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
   }
   if (type == 'adicional') {
-    arrayAdicional.push({'name':name , 'type':type ,'price':price});
+    arrayAdicional.push(detail);
     localStorage.setItem('arrayAdicional', JSON.stringify(arrayAdicional));
+    let countAdicional = JSON.parse(localStorage.arrayAdicional);
+    $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"))
   }
   if (type == 'bebida') {
-    arrayBebidas.push({'name':name , 'type':type ,'price':price});
+    arrayBebidas.push(detail);
     localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
+    let countBebida = JSON.parse(localStorage.arrayBebidas);
+    $('#resumen-pedido-bebida-total').val(countBebida.join("\n"))
   }
 
 };
 
-let decrementTotal = (price, idNumberBox, name, type) => {
+let decrementTotal = (price, idNumberBox, name, type,detail) => {
 
   let totalPedido = localStorage.getItem('totalFinal');
   let number = $(`#${idNumberBox}`).text();
@@ -150,34 +157,39 @@ let decrementTotal = (price, idNumberBox, name, type) => {
 
     // Encontrar el valor y eliminarlo
     if (type == 'grande') {
-      let index = arrayBigPizza.indexOf(name);
+      let index = arrayBigPizza.indexOf(detail);
       arrayBigPizza.splice(index, 1);
       localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
     }
     if (type == 'familiar') {
-      let index = arrayFamilyPizza.indexOf(name);
+      let index = arrayFamilyPizza.indexOf(detail);
       arrayFamilyPizza.splice(index, 1);
       localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
     }
     if (type == 'adicional') {
-      let index = arrayAdicional.indexOf(name);
+      let index = arrayAdicional.indexOf(detail);
       arrayAdicional.splice(index, 1);
       localStorage.setItem('arrayAdicional', JSON.stringify(arrayAdicional));
+      let countAdicional = JSON.parse(localStorage.arrayAdicional);
+      $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"))
+      
     }
     if (type == 'bebida') {
-      let index = arrayBebidas.indexOf(name);
+      let index = arrayBebidas.indexOf(detail);
       arrayBebidas.splice(index, 1);
       localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
+      let countBebida = JSON.parse(localStorage.arrayBebidas);
+      $('#resumen-pedido-bebida-total').val(countBebida.join("\n"))
     }
   }
 };
 
 // $('#confirm-resume').on('click',function(){
 //   $(location).attr('href', 'views/resume.html');
-  
+
 //   });
-  
- 
+
+
 // Función que inserta los valores con el estilo determinado
 let templateProducts = (element, container) => {
   let template = ` <div class="row pt-2 ">
@@ -186,10 +198,10 @@ let templateProducts = (element, container) => {
     <p class="f14">${element.description}</p>
   </div>
   <div class="col-2 text-right">
-    <button class="increment btn-subt" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} >+</button>
+    <button class="increment btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} >+</button>
   </div>
   <div class="col-1" id=${element.title} >0</div>
-  <div class="col-2"><button class="decrement btn-subt" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type}>-</button>
+  <div class="col-2"><button class="decrement btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type}>-</button>
   
   </div>  
   <div class="border-bot "></div>

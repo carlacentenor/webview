@@ -60,19 +60,28 @@
       </div>
 
     </section>
+
+
+
+
+
+
+
     <!-- Section Confirmar resumen-->
-    <section>
+    <section class="detail-css">
       <h5>Detalle de Pedido</h5>
       <form id="detalle-pedido-final">
-        <input type="text" name="detallepedido" id="resumen-pedido-total">
-        <button type="submit" class="btn-confirm text-center p-2 ">Confirmar
+        <textarea type="text" disabled="true" name="detallepedidoBig" id="resumen-pedido-big-total"></textarea>
+        <textarea type="text"  disabled="true" name="detallepedidoFamily" id="resumen-pedido-family-total"></textarea>
+        <textarea type="text"  disabled="true" name="detallepedidoAdicional" id="resumen-pedido-adicional-total"></textarea>
+        <textarea type="text"  disabled="true" name="detallepedidoBebida" id="resumen-pedido-bebida-total"></textarea>
+        <button type="submit"  disabled="true" class="btn-confirm text-center p-2 ">Confirmar
           <span id="total"></span>
         </button>
       </form>
     </section>
 
   </main>
-
   <!-- Section Pizza Grande -->
   <section class="big-pizza-section">
     <div class="container">
@@ -97,9 +106,8 @@
       </div>
     </div>
 
-
+    <div class="p-2 text-center btn-confirm-pizza confirm-family-js">Confirmar </div>
   </section>
-
 
 
   <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="

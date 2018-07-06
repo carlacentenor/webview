@@ -8,7 +8,8 @@
             "title": "americanagrande",
             "description": "Jamón y queso mozzarella",
             "precio": 40.90,
-            "type" : "grande"
+            "type" : "grande",
+            "detail" : "Pizza Americana Grande a S/40.90"
           },
           {
             "id": "2g",
@@ -17,7 +18,8 @@
             "title": "pepperonigrande",
             "description": "Pepperoni y queso mozzarella",
             "precio": 40.90,
-            "type" : "grande"
+            "type" : "grande",
+            "detail" : "Pizza Pepperoni Grande a S/40.90"
           },
           {
             "id": "3g",
@@ -26,7 +28,8 @@
             "title": "vegetarianagrande",
             "description": "Tomates, champiñones, cebolla, pimientos, aceitunas negras y queso mozzarella",
             "precio": 40.90,
-            "type" : "grande"
+            "type" : "grande",
+            "detail" : "Pizza Vegetariana Grande a S/40.90"
           },
           {
             "id": "4g",
@@ -35,7 +38,8 @@
             "title": "hawaianagrande",
             "description": "Jamón, piña y queso mozzarella extra",
             "precio": 45.90,
-            "type" : "grande"
+            "type" : "grande",
+            "detail" : "Pizza Hawaiana Grande a S/45.90"
           },
           {
             "id": "5g",
@@ -44,7 +48,8 @@
             "title": "hawaiianchickenbbqgrande",
             "description": "Deliciosa base de salsa BBQ, pollo, tocino, cebolla blanca, piña y queso mozzarella",
             "precio": 55.90,
-            "type" : "grande"
+            "type" : "grande",
+            "detail" : "Pizza Hawaiian Chicken BBQ Grande a S/55.90"
           },
           {
             "id": "6g",
@@ -53,7 +58,8 @@
             "title": "allthemeatsgrande",
             "description": "Pepperoni, salchicha de cerdo, jamón, tocino, carne de res y queso mozzarella",
             "precio": 55.90,
-            "type" : "grande"
+            "type" : "grande",
+            "detail" : "Pizza All the Meats Grande a S/55.90"
           },
           {
             "id": "7g",
@@ -62,7 +68,8 @@
             "title": "theworksgrande",
             "description": "Pepperoni, salchicha italiana, jamón, pimientos verdes, cebolla blanca, champiñones, aceitunas negras y queso mozzarella",
             "precio": 55.90,
-            "type" : "grande"
+            "type" : "grande",
+            "detail" : "Pizza The Works Grande a S/55.90"
           }
 
         ],
@@ -73,7 +80,8 @@
             "title": "americanafamiliar",
             "description": "Jamón y queso mozzarella",
             "precio": 50.90,
-            "type" : "familiar"
+            "type" : "familiar",
+            "detail" : "Pizza Americana Familiar a S/50.90"
           },
           {
             "id": "2f",
@@ -82,7 +90,8 @@
             "title": "pepperonifamiliar",
             "description": "pepperoni y queso mozzarella",
             "precio": 50.90,
-            "type" : "familiar"
+            "type" : "familiar",
+            "detail" : "Pizza Pepperoni Familiar a S/50.90"
           },
           {
             "id": "3f",
@@ -91,7 +100,8 @@
             "title": "vegetarianafamiliar",
             "description": "Tomates, champiñones, cebolla, pimientos, aceitunas negras y queso mozzarella",
             "precio": 50.90,
-            "type" : "familiar"
+            "type" : "familiar",
+            "detail" : "Pizza Vegetariana Familiar a S/50.90"
           },
           {
             "id": "4f",
@@ -100,7 +110,8 @@
             "title": "hawaianafamiliar",
             "description": "Jamón, piña y queso mozzarella extra",
             "precio": 55.90,
-            "type" : "familiar"
+            "type" : "familiar",
+            "detail" : "Pizza Hawaiana Familiar a S/55.90"
           },
           {
             "id": "5f",
@@ -109,7 +120,8 @@
             "title": "hawaiianchickenbbqfamiliar",
             "description": "Deliciosa base de salsa BBQ, pollo, tocino, cebolla blanca, piña y queso mozzarella",
             "precio": 65.90,
-            "type" : "familiar"
+            "type" : "familiar",
+            "detail" : "Pizza Hawaiian Chicken BBQ Familiar a S/65.90"
           },
           {
             "id": "6f",
@@ -118,7 +130,8 @@
             "title": "allthemeatsfamiliar",
             "description": "Pepperoni, salchicha de cerdo, jamón, tocino, carne de res y queso mozzarella",
             "precio": 65.90,
-            "type" : "familiar"
+            "type" : "familiar",
+            "detail" : "Pizza All the Meats Familiar a S/65.90"
           },
           {
             "id": "7f",
@@ -127,7 +140,8 @@
             "title": "theworksfamiliar",
             "description": "Pepperoni, salchicha italiana, jamón, pimientos verdes, cebolla blanca, champiñones, aceitunas negras y queso mozzarella",
             "precio": 65.90,
-            "type" : "familiar"
+            "type" : "familiar",
+            "detail" : "Pizza The Works Familiar a S/65.90"
           }
 
         ]
@@ -135,11 +149,12 @@
       "adicionales": [{
         "id": "1a",
         "id2": "1ad",
-        "nombre": "Pepperoni-rolls",
+        "nombre": "",
         "title": "pepperonirolls",
         "description": "6 riquísimos rolls de pepperoni enrollados con nuestra masa especial",
         "precio": 10.90,
-        "type" : "adicional"
+        "type" : "adicional",
+        "detail" : "Pepperoni rolls a S/ 10.90"
       },
       {
         "id": "2a",
@@ -148,7 +163,8 @@
         "title": "wings",
         "description": "6 Irresistibles alitas de pollo asadas al horno, servidas con nuestras inigualables salsa BBQ",
         "precio": 12.90,
-        "type" : "adicional"
+        "type" : "adicional",
+        "detail" : "Wings a S/ 12.90"
       }],
       "bebidas": [{
           "id": "1b",
@@ -157,7 +173,8 @@
           "title": "cocacolaoriginal",
           "description": "Coca Cola sabor original de 1,5L ",
           "precio": 7.90,
-          "type" : "bebida"
+          "type" : "bebida",
+          "detail" : "Coca Cola Original a S/ 7.90"
         },
         {
           "id": "2b",
@@ -166,7 +183,8 @@
           "title": "cocacolasinazucar",
           "description": "Coca Cola sin azúcar de 1,5L ",
           "precio": 7.90,
-          "type" : "bebida"
+          "type" : "bebida",
+          "detail" : "Coca Cola Sin Azúcar a S/ 7.90"
         },
         {
           "id": "3b",
@@ -175,7 +193,8 @@
           "title": "inkacolaoriginal",
           "description": "Inca Kola sabor original de 1,5L ",
           "precio": 7.90,
-          "type" : "bebida"
+          "type" : "bebida",
+          "detail" : "Inca Kola Original a S/ 7.90"
         },
         {
           "id": "4b",
@@ -184,7 +203,8 @@
           "title": "inkacolasinazucar",
           "description": "Inca Kola sin azúcar de 1,5L ",
           "precio": 7.90,
-          "type" : "bebida"
+          "type" : "bebida",
+          "detail" : "Inka Cola Sin Azúcar a S/ 7.90"
         }
 
       ]

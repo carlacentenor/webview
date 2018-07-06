@@ -36,7 +36,7 @@
             Pizzas Familiares
           </div>
           <div class="col-4 text-right pr-0">
-              <span id="total-count-family">0</span>
+            <span id="total-count-family">0</span>
             <button class="btn-general" id="btn-family-pizza">
               +
             </button>
@@ -60,14 +60,15 @@
       </div>
 
     </section>
-<!-- Section Confirmar resumen-->
-    <section class="container">
-      <div class="btn-confirm text-center p-2" id="confirm-resume">
-        <span class="mb-0">CONFIRMAR </span>
-        <span>(S/</span>
-        <span id="total"></span>
-        <span>)</span>
-      </div>
+    <!-- Section Confirmar resumen-->
+    <section>
+      <h5>Detalle de Pedido</h5>
+      <form id="detalle-pedido-final">
+        <input type="text" name="detallepedido" id="resumen-pedido-total">
+        <button type="submit" class="btn-confirm text-center p-2 ">Confirmar
+          <span id="total"></span>
+        </button>
+      </form>
     </section>
 
   </main>
@@ -95,13 +96,15 @@
       <div class="container-bigfamily container">
       </div>
     </div>
-    <div class="p-2 text-center btn-confirm-pizza confirm-family-js ">Confirmar </div>
+
+
   </section>
+
 
 
   <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
     crossorigin="anonymous"></script>
-   
+
   <script src="app.js"></script>
 </body>
 

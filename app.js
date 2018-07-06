@@ -97,6 +97,7 @@ confirmBig.on('click', function () {
   $('#total-count-big').text(countPizzaBig.length);
   bigPizzaSection.hide();
   containerPrincipal.show();
+  $('#resumen-pedido-total').val(countPizzaBig)
 });
 
 confirmFamily.on('click', function () {
@@ -171,10 +172,10 @@ let decrementTotal = (price, idNumberBox, name, type) => {
   }
 };
 
-$('#confirm-resume').on('click',function(){
-  $(location).attr('href', 'views/resume.html');
+// $('#confirm-resume').on('click',function(){
+//   $(location).attr('href', 'views/resume.html');
   
-  });
+//   });
   
  
 // Función que inserta los valores con el estilo determinado

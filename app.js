@@ -25,6 +25,8 @@ const confirmFamily = $('.confirm-family-js');
 // array Pedido
 let arrayBigPizza = [];
 let arrayFamilyPizza = [];
+let arrayAdicional = [];
+let arrayBebidas = [];
 //hidden section big  /family
 bigPizzaSection.hide();
 familyPizzaSection.hide();
@@ -55,7 +57,8 @@ $(document).on('click', '.increment', function () {
   let namePizza = $(this).data('name');
   let type = $(this).data('type');
   let idNumber = $(this).context.parentElement.nextElementSibling.id;
-  incrementTotal(price, idNumber, namePizza,type);
+  incrementTotal(price, idNumber, namePizza, type);
+
 })
 
 $(document).on('click', '.decrement', function () {
@@ -63,7 +66,10 @@ $(document).on('click', '.decrement', function () {
   let namePizza = $(this).data('name');
   let type = $(this).data('type');
   let idNumber = $(this).context.parentElement.previousElementSibling.id;
-  decrementTotal(price, idNumber,namePizza,type);
+
+  decrementTotal(price, idNumber, namePizza, type);
+
+
 })
 
 //Eventos de Big Pizza and Family Pizza
@@ -96,14 +102,14 @@ confirmBig.on('click', function () {
 confirmFamily.on('click', function () {
   let countPizzaFamily = JSON.parse(localStorage.arrayFamilyPizza);
   $('#total-count-family').text(countPizzaFamily.length);
-  bigPizzaSection.hide();
+  familyPizzaSection.hide();
   containerPrincipal.show();
 });
 
 
 
 // Funciones de Incrementar/Decrementar Precio
-let incrementTotal = (price, idNumberBox, name,type) => {
+let incrementTotal = (price, idNumberBox, name, type) => {
   let totalPedido = localStorage.getItem('totalFinal');
   let number = $(`#${idNumberBox}`).text();
   number = parseInt(number) + 1;
@@ -111,32 +117,66 @@ let incrementTotal = (price, idNumberBox, name,type) => {
   let final = parseFloat(price) + parseFloat(totalPedido);
   localStorage.setItem('totalFinal', final.toFixed(1));
   showTotal.text(localStorage.getItem('totalFinal'));
-if(type == 'grande'){
-  arrayBigPizza.push(name);
-  localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
-}
-if(type == 'familiar'){
-  arrayFamilyPizza.push(name);
-  localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
-}
- 
+  if (type == 'grande') {
+    arrayBigPizza.push({'name':name , 'type':type ,'price':price});
+    localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
+  }
+  if (type == 'familiar') {
+    arrayFamilyPizza.push({'name':name , 'type':type ,'price':price});
+    localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
+  }
+  if (type == 'adicional') {
+    arrayAdicional.push({'name':name , 'type':type ,'price':price});
+    localStorage.setItem('arrayAdicional', JSON.stringify(arrayAdicional));
+  }
+  if (type == 'bebida') {
+    arrayBebidas.push({'name':name , 'type':type ,'price':price});
+    localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
+  }
+
 };
 
-let decrementTotal = (price, idNumberBox,name,type) => {
-  
+let decrementTotal = (price, idNumberBox, name, type) => {
+
   let totalPedido = localStorage.getItem('totalFinal');
   let number = $(`#${idNumberBox}`).text();
   number = parseInt(number) - 1;
-  $(`#${idNumberBox}`).text(number); // mostrando valores 
-  let final = parseFloat(totalPedido) - parseFloat(price);
-  localStorage.setItem('totalFinal', final.toFixed(1));
-  showTotal.text(localStorage.getItem('totalFinal'));
-  // Encontrar el valor y eliminarlo
-  let index = arrayBigPizza.indexOf(name);
-  arrayBigPizza.splice( index, 1 );
-  localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
+  if (number >= 0) {
+    $(`#${idNumberBox}`).text(number); // mostrando valores 
+    let final = parseFloat(totalPedido) - parseFloat(price);
+    localStorage.setItem('totalFinal', final.toFixed(1));
+    showTotal.text(localStorage.getItem('totalFinal'));
+
+    // Encontrar el valor y eliminarlo
+    if (type == 'grande') {
+      let index = arrayBigPizza.indexOf(name);
+      arrayBigPizza.splice(index, 1);
+      localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
+    }
+    if (type == 'familiar') {
+      let index = arrayFamilyPizza.indexOf(name);
+      arrayFamilyPizza.splice(index, 1);
+      localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
+    }
+    if (type == 'adicional') {
+      let index = arrayAdicional.indexOf(name);
+      arrayAdicional.splice(index, 1);
+      localStorage.setItem('arrayAdicional', JSON.stringify(arrayAdicional));
+    }
+    if (type == 'bebida') {
+      let index = arrayBebidas.indexOf(name);
+      arrayBebidas.splice(index, 1);
+      localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
+    }
+  }
 };
 
+$('#confirm-resume').on('click',function(){
+  $(location).attr('href', 'views/resume.html');
+  
+  });
+  
+ 
 // Función que inserta los valores con el estilo determinado
 let templateProducts = (element, container) => {
   let template = ` <div class="row pt-2 ">
@@ -145,10 +185,10 @@ let templateProducts = (element, container) => {
     <p class="f14">${element.description}</p>
   </div>
   <div class="col-2 text-right">
-    <button class="increment btn-subt" data-name=${element.nombre} data-precio=${element.precio} data-type=${element.type} >+</button>
+    <button class="increment btn-subt" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} >+</button>
   </div>
   <div class="col-1" id=${element.title} >0</div>
-  <div class="col-2"><button class="decrement btn-subt" data-name=${element.nombre} data-precio=${element.precio} data-type=${element.type}>-</button>
+  <div class="col-2"><button class="decrement btn-subt" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type}>-</button>
   
   </div>  
   <div class="border-bot "></div>

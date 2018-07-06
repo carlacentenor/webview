@@ -24,7 +24,7 @@
           <div class="col-8 ">
             Pizzas Grandes
           </div>
-          <div class="col-4">
+          <div class="col-4 text-right pr-0">
             <span id="total-count-big">0</span>
             <button class="btn-general" id="btn-big-pizza">
               +
@@ -35,7 +35,7 @@
           <div class="col-8 ">
             Pizzas Familiares
           </div>
-          <div class="col-4">
+          <div class="col-4 text-right pr-0">
               <span id="total-count-family">0</span>
             <button class="btn-general" id="btn-family-pizza">
               +
@@ -46,13 +46,13 @@
       </div>
       <div>
         <div class="title-section p-2">Adicionales</div>
-        <div class="container-adicional container">
+        <div class="container-adicional ">
         </div>
       </div>
 
       <div>
         <div class="title-section p-2">Bebidas</div>
-        <div class="container-bebidas container">
+        <div class="container-bebidas ">
         </div>
         <div>
           <input type="checkbox">Helada
@@ -60,9 +60,9 @@
       </div>
 
     </section>
-
+<!-- Section Confirmar resumen-->
     <section class="container">
-      <div class="btn-confirm text-center p-2">
+      <div class="btn-confirm text-center p-2" id="confirm-resume">
         <span class="mb-0">CONFIRMAR </span>
         <span>(S/</span>
         <span id="total"></span>
@@ -71,6 +71,8 @@
     </section>
 
   </main>
+
+  <!-- Section Pizza Grande -->
   <section class="big-pizza-section">
     <div class="container">
       <div class="mt-2">
@@ -99,6 +101,7 @@
 
   <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
     crossorigin="anonymous"></script>
+   
   <script src="app.js"></script>
 </body>
 

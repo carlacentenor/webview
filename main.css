@@ -19,8 +19,10 @@
   background-color: #777777;
   color: white;
   border: 1px solid #777777;
-  padding: 4px 8px;
+ 
   font-size: 18px;
+  height: 40px;
+  width: 35px;
 }
 
 .btn-subt {

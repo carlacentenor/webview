@@ -70,11 +70,18 @@
     <!-- Section Confirmar resumen-->
     <section class="detail-css">
       <h5>Detalle de Pedido</h5>
+      <div class="detail-view">
+
+      </div>
+
+
+
+
       <form id="detalle-pedido-final">
-        <textarea type="text" disabled="true" name="detallepedidoBig" id="resumen-pedido-big-total"></textarea>
-        <textarea type="text"  disabled="true" name="detallepedidoFamily" id="resumen-pedido-family-total"></textarea>
-        <textarea type="text"  disabled="true" name="detallepedidoAdicional" id="resumen-pedido-adicional-total"></textarea>
-        <textarea type="text"  disabled="true" name="detallepedidoBebida" id="resumen-pedido-bebida-total"></textarea>
+        <input type="hidden" disabled="true" name="detallepedidoBig" id="resumen-pedido-big-total">
+        <input type="hidden"  disabled="true" name="detallepedidoFamily" id="resumen-pedido-family-total">
+        <input type="hidden"  disabled="true" name="detallepedidoAdicional" id="resumen-pedido-adicional-total">
+        <input type="hidden"  disabled="true" name="detallepedidoBebida" id="resumen-pedido-bebida-total">
         <button type="submit"  disabled="true" class="btn-confirm text-center p-2 ">Confirmar
           <span id="total"></span>
         </button>

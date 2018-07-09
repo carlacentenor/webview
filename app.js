@@ -316,3 +316,16 @@ let templateProducts = (element, container) => {
 </div>`;
   container.append(template);
 }
+
+
+    // {
+        //   "id": "4b",
+        //   "id2": "4bd",
+        //   "nombre": "Inca Kola Sin Azúcar",
+        //   "title": "inkacolasinazucar",
+        //   "description": "Inca Kola sin azúcar de 1,5L ",
+        //   "precio": 7.90,
+        //   "type" : "bebida",
+        //   "detail" : "Inka Cola Sin Azúcar a S/ 7.90",
+        //   "img" : "https://user-images.githubusercontent.com/32285482/42459983-765ec478-8362-11e8-94e4-b56b497ed3cd.png"
+        // }

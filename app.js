@@ -328,4 +328,14 @@ let templateProducts = (element, container) => {
         //   "type" : "bebida",
         //   "detail" : "Inka Cola Sin Azúcar a S/ 7.90",
         //   "img" : "https://user-images.githubusercontent.com/32285482/42459983-765ec478-8362-11e8-94e4-b56b497ed3cd.png"
-        // }
+        // }// {
+        //   "id": "2b",
+        //   "id2": "2bd",
+        //   "nombre": "Coca Cola Sin Azúcar",
+        //   "title": "cocacolasinazucar",
+        //   "description": "Coca Cola sin azúcar de 1,5L ",
+        //   "precio": 7.90,
+        //   "type" : "bebida",
+        //   "detail" : "Coca Cola Sin Azúcar a S/ 7.90",
+        //   "img" :"https://user-images.githubusercontent.com/32285482/42459977-73f94172-8362-11e8-8a3b-3ae08de28631.png"
+        // },

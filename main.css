@@ -32,6 +32,11 @@
   width: 35px;
 }
 
+.img-icon{
+  height: 40px;
+  width: 40px;
+}
+
 .btn-subt {
   text-align: center;
   background-color: var(--lightgrey);

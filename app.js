@@ -67,7 +67,7 @@ $(document).on('click', '.increment', function () {
     $(`#${btnDecrement}`).addClass('btn-active');
     $(this).addClass('btn-active');
   }
-  
+
 });
 
 $(document).on('click', '.decrement', function () {
@@ -122,11 +122,11 @@ confirmBig.on('click', function () {
   </div>`;
     containerDetail.append(templateView);
   });
-  if(countPizzaBig.length>0){
-    $('#total-count-big').css('color','red');
+  if (countPizzaBig.length > 0) {
+    $('#total-count-big').css('color', 'red');
     btnBigPizza.addClass('btn-active');
-  }else{
-    $('#total-count-big').css('color','#009774');
+  } else {
+    $('#total-count-big').css('color', '#009774');
     btnBigPizza.removeClass('btn-active');
   }
 
@@ -147,11 +147,11 @@ confirmFamily.on('click', function () {
   </div>`;
     containerDetail.append(templateView);
   });
-  if(countPizzaFamily.length>0){
-    $('#total-count-family').css('color','red');
+  if (countPizzaFamily.length > 0) {
+    $('#total-count-family').css('color', 'red');
     btnFamilyPizza.addClass('btn-active');
-  }else{
-    $('#total-count-family').css('color','#009774');
+  } else {
+    $('#total-count-family').css('color', '#009774');
     btnFamilyPizza.removeClass('btn-active');
   }
 });

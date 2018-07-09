@@ -13,10 +13,17 @@
 
 <body>
   <main class="containerPrincipal">
-    <section class="container">
+    <section class="container-fluid ">
 
       <div class="title-section p-2">
-        Pizzas
+        <div class="row">
+          <div class="col-2">
+            <img class="img-icon" src="img/pizza.svg" alt="">
+          </div>
+          <div class="col-10"> Pizzas</div>
+        </div>
+
+
       </div>
       <div class="container mb-3">
         <div class="row pt-2 pb-2 pl-0 pr-2">
@@ -45,16 +52,31 @@
       </div>
       </div>
       <div class="mb-3">
-        <div class="title-section p-2">Adicionales</div>
+        <div class="title-section p-2">
+          <div class="row">
+            <div class="col-2">
+              <img class="img-icon" src="img/cinnamon-roll.svg" alt="">
+            </div>
+            <div class="col-10"> Adicionales</div>
+          </div>
+
+        </div>
         <div class="container-adicional row">
         </div>
       </div>
 
       <div>
-        <div class="title-section p-2">Bebidas</div>
+        <div class="title-section p-2">
+          <div class="row">
+            <div class="col-2">
+              <img class="img-icon" src="img/soda.svg" alt="">
+            </div>
+            <div class="col-10"> Bebidas</div>
+          </div>
+        </div>
         <div class="container-bebidas row ">
         </div>
-      
+
       </div>
 
     </section>
@@ -69,17 +91,19 @@
     <section class="detail-css">
       <h5>Detalle de Pedido</h5>
       <div class="detail-view"></div>
-    
+
     </section>
     <form id="preferencesForm">
-        <input id="resumen-pedido-big-total" type="hidden" name="detallepedidoBig">
-        <input id="resumen-pedido-family-total" type="hidden" name="detallepedidoFamily">
-        <input id="resumen-pedido-adicional-total" type="hidden" name="detallepedidoAdicional">
-        <input id="resumen-pedido-bebida-total" type="hidden" name="detallepedidoBebida">
-        <input type="hidden" name="userId">
-        <input type="hidden" name="blockName">
-        <button type="submit" class="btn-confirm text-center p-2">Confirmar<span id="total"></span></button>
-      </form>
+      <input id="resumen-pedido-big-total" type="hidden" name="detallepedidoBig">
+      <input id="resumen-pedido-family-total" type="hidden" name="detallepedidoFamily">
+      <input id="resumen-pedido-adicional-total" type="hidden" name="detallepedidoAdicional">
+      <input id="resumen-pedido-bebida-total" type="hidden" name="detallepedidoBebida">
+      <input type="hidden" name="userId">
+      <input type="hidden" name="blockName">
+      <button type="submit" class="btn-confirm text-center p-2">Confirmar
+        <span id="total"></span>
+      </button>
+    </form>
 
   </main>
   <!-- Section Pizza Grande -->

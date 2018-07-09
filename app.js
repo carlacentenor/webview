@@ -58,20 +58,32 @@ $(document).on('click', '.increment', function () {
   let namePizza = $(this).data('name');
   let type = $(this).data('type');
   let detail = $(this).data('detail');
-  let idNumber = $(this).context.parentElement.nextElementSibling.id;
+  let idNumber = $(this).context.parentElement.previousElementSibling.id;
   incrementTotal(price, idNumber, namePizza, type, detail);
-
-})
+  let number = $(this).context.parentElement.previousElementSibling;
+  let btnDecrement = $(this).context.parentElement.previousElementSibling.previousElementSibling.children[0].id;
+  if ($(`#${idNumber}`).text() > 0) {
+    $(`#${idNumber}`).css('color', 'red');
+    $(`#${btnDecrement}`).addClass('btn-active');
+    $(this).addClass('btn-active');
+  }
+  
+});
 
 $(document).on('click', '.decrement', function () {
   let price = $(this).data('precio');
   let namePizza = $(this).data('name');
   let type = $(this).data('type');
   let detail = $(this).data('detail');
-  let idNumber = $(this).context.parentElement.previousElementSibling.id;
-
+  let idNumber = $(this).context.parentElement.nextElementSibling.id;
   decrementTotal(price, idNumber, namePizza, type, detail);
-
+  let number = $(this).context.parentElement.nextElementSibling;
+  let btnDecrement = $(this).context.parentElement.nextElementSibling.nextElementSibling.children[0].id;
+  if ($(`#${idNumber}`).text() == 0) {
+    $(`#${idNumber}`).css('color', 'green');
+    $(`#${btnDecrement}`).removeClass('btn-active');
+    $(this).removeClass('btn-active');
+  }
 
 })
 
@@ -110,6 +122,13 @@ confirmBig.on('click', function () {
   </div>`;
     containerDetail.append(templateView);
   });
+  if(countPizzaBig.length>0){
+    $('#total-count-big').css('color','red');
+    btnBigPizza.addClass('btn-active');
+  }else{
+    $('#total-count-big').css('color','#009774');
+    btnBigPizza.removeClass('btn-active');
+  }
 
 });
 
@@ -128,6 +147,13 @@ confirmFamily.on('click', function () {
   </div>`;
     containerDetail.append(templateView);
   });
+  if(countPizzaFamily.length>0){
+    $('#total-count-family').css('color','red');
+    btnFamilyPizza.addClass('btn-active');
+  }else{
+    $('#total-count-family').css('color','#009774');
+    btnFamilyPizza.removeClass('btn-active');
+  }
 });
 
 
@@ -136,8 +162,9 @@ confirmFamily.on('click', function () {
 let incrementTotal = (price, idNumberBox, name, type, detail) => {
   let totalPedido = localStorage.getItem('totalFinal');
   let number = $(`#${idNumberBox}`).text();
+
   number = parseInt(number) + 1;
-  $(`#${idNumberBox}`).text(number); // mostrando valores 
+  $(`#${idNumberBox}`).text(number); // mostrando valores
   let final = parseFloat(price) + parseFloat(totalPedido);
   localStorage.setItem('totalFinal', final.toFixed(1));
   showTotal.text(localStorage.getItem('totalFinal'));
@@ -201,6 +228,7 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
     localStorage.setItem('totalFinal', final.toFixed(1));
     showTotal.text(localStorage.getItem('totalFinal'));
 
+
     // Encontrar el valor y eliminarlo
     if (type == 'grande') {
       let index = arrayBigPizza.indexOf(detail);
@@ -262,22 +290,26 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
 
 
 
+
 // Función que inserta los valores con el estilo determinado
 let templateProducts = (element, container) => {
   let template = ` <div class="col-6 pt-2 ">
-  <div class="">
-    <p class="mb-0 name-product">${element.nombre} S/ ${element.precio}0 </p>
-    <p class="f14">${element.description}</p>
+  <div class="mb-2">
+    <p class="mb-0 name-product text-center">${element.nombre}  </p>
+    <p class="text-center mb-0 name-product">S/ ${element.precio}0</p>
+    <p class="f14 text-center">${element.description}</p>
     <div class="row">
-    <div class="col-4 text-right">
-    <button class="increment btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} >+</button>
+    <div class="col-4 offset-1 text-right">
+    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" >-</button>
   </div>
-  <div class="col-4" id=${element.title} >0</div>
-  <div class="col-4"><button class="decrement btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type}>-</button>
+  <div class="col-2 text-center number-span" id=${element.title} >0</div>
+  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" >+</button>
   
     </div>
    
-  </div>  
+  </div> 
+    <div class="mt-2"><img class="img-fluid" src="${element.img}" ></div>
+    
   </div>
   
   

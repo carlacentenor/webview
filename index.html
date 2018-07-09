@@ -18,33 +18,33 @@
       <div class="title-section p-2">
         Pizzas
       </div>
-      <div class="container">
+      <div class="container mb-3">
         <div class="row pt-2 pb-2 pl-0 pr-2">
 
-          <div class="col-8 ">
-            Pizzas Grandes
+          <div class="col-8 name-product">
+            Pizzas Grandes (8 slices)
           </div>
           <div class="col-4 text-right pr-0">
-            <span id="total-count-big">0</span>
-            <button class="btn-general" id="btn-big-pizza">
+            <span id="total-count-big" class="number-span">0</span>
+            <button class="btn-general ml-3" id="btn-big-pizza">
               +
             </button>
           </div>
         </div>
         <div class="row pt-2 pb-2 pl-0 pr-2">
-          <div class="col-8 ">
-            Pizzas Familiares
+          <div class="col-8 name-product">
+            Pizzas Familiares (10 slices)
           </div>
           <div class="col-4 text-right pr-0">
-            <span id="total-count-family">0</span>
-            <button class="btn-general" id="btn-family-pizza">
+            <span id="total-count-family" class="number-span">0</span>
+            <button class="btn-general ml-3" id="btn-family-pizza">
               +
             </button>
           </div>
         </div>
       </div>
       </div>
-      <div>
+      <div class="mb-3">
         <div class="title-section p-2">Adicionales</div>
         <div class="container-adicional row">
         </div>
@@ -69,7 +69,9 @@
     <section class="detail-css">
       <h5>Detalle de Pedido</h5>
       <div class="detail-view"></div>
-      <form id="preferencesForm">
+    
+    </section>
+    <form id="preferencesForm">
         <input id="resumen-pedido-big-total" type="hidden" name="detallepedidoBig">
         <input id="resumen-pedido-family-total" type="hidden" name="detallepedidoFamily">
         <input id="resumen-pedido-adicional-total" type="hidden" name="detallepedidoAdicional">
@@ -78,7 +80,6 @@
         <input type="hidden" name="blockName">
         <button type="submit" class="btn-confirm text-center p-2">Confirmar<span id="total"></span></button>
       </form>
-    </section>
 
   </main>
   <!-- Section Pizza Grande -->

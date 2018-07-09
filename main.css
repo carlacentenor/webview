@@ -1,5 +1,13 @@
+:root {
+  --red: #F20030;
+  --green: #009774;
+  --darkgrey: #807673;
+  --lightgrey: #A39D9B;
+  --freshgrey: #6B514B;
+}
+
 .title-section {
-  background-color: #559575;
+  background-color: var(--green);
   color: white;
   font-size: 20px;
 }
@@ -9,17 +17,16 @@
 }
 
 .subtitle {
-  color: #BB141A;
+  color: var(--red);
   text-transform: uppercase;
   font-size: 24px;
 }
 
 .btn-general {
   text-align: center;
-  background-color: #777777;
+  background-color: var(--darkgrey);
   color: white;
-  border: 1px solid #777777;
- 
+  border: none;
   font-size: 18px;
   height: 40px;
   width: 35px;
@@ -27,59 +34,70 @@
 
 .btn-subt {
   text-align: center;
-  background-color: #B7B7B7;
+  background-color: var(--lightgrey);
   color: white;
-  border: 1px solid #B7B7B7;
+  border: 1px solid var(--lightgrey);
   height: 40px;
   width: 35px;
   font-size: 18px;
+  outline: none;
 }
 
 .border-bot {
-  border-bottom: 1px solid #B7B7B7;
+  border-bottom: 1px solid var(--lightgrey);
   height: 10px;
   width: 100%;
 }
 
 .btn-confirm {
-  background-color: #BB141A;
+  background-color: var(--red);
   color: white;
   font-size: 20px;
+  width: 100%;
+  border: none;
+
+}
+
+.number-span{
+  color: var(--green);
+  font-size: 24px;
 }
 
 .back {
-  color: #559575;
+  color: var(--green);
 }
 
 .btn-confirm-pizza {
-  background-color: #559575;
+  background-color: var(--green);
   width: 100%;
   color: white;
   text-transform: uppercase;
   font-size: 20px;
 }
 
-.container-bigpizza{
+.btn-active{
+  background-color: var(--red);
+}
+
+.container-bigpizza {
   color: #898989;
 }
 
-.name-product{
+.name-product {
   font-size: 17px;
   font-weight: 500;
 }
 
-textarea{
+textarea {
   width: 100%;
   height: auto;
   border: none;
   outline: none;
-  
-
 }
 
-.detail-css{
-  border: 2px solid #559575;
-  border-radius: 10px;
+.detail-css {
+  border: 2px solid var(--green);
+  border-radius: 5px;
   margin: 1em;
   padding: 1em;
 }

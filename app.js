@@ -27,6 +27,7 @@ let arrayBigPizza = [];
 let arrayFamilyPizza = [];
 let arrayAdicional = [];
 let arrayBebidas = [];
+let arrayFinaly = [];
 //hidden section big  /family
 bigPizzaSection.hide();
 familyPizzaSection.hide();
@@ -100,6 +101,16 @@ confirmBig.on('click', function () {
   bigPizzaSection.hide();
   containerPrincipal.show();
   $('#resumen-pedido-big-total').val(countPizzaBig.join("\n"))
+  const containerDetail = $('.detail-view');
+  containerDetail.empty();
+  let countFinally = JSON.parse(localStorage.arrayFinaly);
+  countFinally.forEach(element => {
+    let templateView = `<div>
+    <p>1 ${element} </p>
+  </div>`;
+    containerDetail.append(templateView);
+  });
+
 });
 
 confirmFamily.on('click', function () {
@@ -107,13 +118,22 @@ confirmFamily.on('click', function () {
   $('#total-count-family').text(countPizzaFamily.length);
   familyPizzaSection.hide();
   containerPrincipal.show();
-  $('#resumen-pedido-family-total').val(countPizzaFamily.join("\n"))
+  $('#resumen-pedido-family-total').val(countPizzaFamily.join("\n"));
+  const containerDetail = $('.detail-view');
+  containerDetail.empty();
+  let countFinally = JSON.parse(localStorage.arrayFinaly);
+  countFinally.forEach(element => {
+    let templateView = `<div>
+    <p>1 ${element} </p>
+  </div>`;
+    containerDetail.append(templateView);
+  });
 });
 
 
 
 // Funciones de Incrementar/Decrementar Precio
-let incrementTotal = (price, idNumberBox, name, type,detail) => {
+let incrementTotal = (price, idNumberBox, name, type, detail) => {
   let totalPedido = localStorage.getItem('totalFinal');
   let number = $(`#${idNumberBox}`).text();
   number = parseInt(number) + 1;
@@ -123,28 +143,54 @@ let incrementTotal = (price, idNumberBox, name, type,detail) => {
   showTotal.text(localStorage.getItem('totalFinal'));
   if (type == 'grande') {
     arrayBigPizza.push(detail);
+    arrayFinaly.push(detail);
     localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
+    localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
   }
   if (type == 'familiar') {
     arrayFamilyPizza.push(detail);
+    arrayFinaly.push(detail);
     localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
+    localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
   }
   if (type == 'adicional') {
     arrayAdicional.push(detail);
+    arrayFinaly.push(detail);
     localStorage.setItem('arrayAdicional', JSON.stringify(arrayAdicional));
+    localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
     let countAdicional = JSON.parse(localStorage.arrayAdicional);
-    $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"))
+    $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"));
+    const containerDetail = $('.detail-view');
+    containerDetail.empty();
+    let countFinally = JSON.parse(localStorage.arrayFinaly);
+    countFinally.forEach(element => {
+      let templateView = `<div>
+    <p>1 ${element} </p>
+  </div>`;
+      containerDetail.append(templateView);
+    });
   }
   if (type == 'bebida') {
     arrayBebidas.push(detail);
+    arrayFinaly.push(detail);
     localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
+    localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
     let countBebida = JSON.parse(localStorage.arrayBebidas);
-    $('#resumen-pedido-bebida-total').val(countBebida.join("\n"))
+    $('#resumen-pedido-bebida-total').val(countBebida.join("\n"));
+    const containerDetail = $('.detail-view');
+    containerDetail.empty();
+    let countFinally = JSON.parse(localStorage.arrayFinaly);
+    countFinally.forEach(element => {
+      let templateView = `<div>
+    <p>1 ${element} </p>
+  </div>`;
+      containerDetail.append(templateView);
+    });
   }
 
 };
 
-let decrementTotal = (price, idNumberBox, name, type,detail) => {
+let decrementTotal = (price, idNumberBox, name, type, detail) => {
 
   let totalPedido = localStorage.getItem('totalFinal');
   let number = $(`#${idNumberBox}`).text();
@@ -158,53 +204,83 @@ let decrementTotal = (price, idNumberBox, name, type,detail) => {
     // Encontrar el valor y eliminarlo
     if (type == 'grande') {
       let index = arrayBigPizza.indexOf(detail);
+      let indexDetail = arrayFinaly.indexOf(detail);
       arrayBigPizza.splice(index, 1);
+      arrayFinaly.splice(index, 1);
       localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
+      localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
     }
     if (type == 'familiar') {
       let index = arrayFamilyPizza.indexOf(detail);
+      let indexDetail = arrayFinaly.indexOf(detail);
       arrayFamilyPizza.splice(index, 1);
+      arrayFinaly.splice(index, 1);
       localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
+      localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
     }
     if (type == 'adicional') {
       let index = arrayAdicional.indexOf(detail);
+      let indexDetail = arrayFinaly.indexOf(detail);
       arrayAdicional.splice(index, 1);
+      arrayFinaly.splice(index, 1);
       localStorage.setItem('arrayAdicional', JSON.stringify(arrayAdicional));
+      localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
       let countAdicional = JSON.parse(localStorage.arrayAdicional);
-      $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"))
-      
+      $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"));
+      const containerDetail = $('.detail-view');
+      containerDetail.empty();
+      let countFinally = JSON.parse(localStorage.arrayFinaly);
+      countFinally.forEach(element => {
+        let templateView = `<div>
+      <p>1 ${element} </p>
+    </div>`;
+        containerDetail.append(templateView);
+      });
+
     }
     if (type == 'bebida') {
       let index = arrayBebidas.indexOf(detail);
+      let indexDetail = arrayFinaly.indexOf(detail);
       arrayBebidas.splice(index, 1);
+      arrayFinaly.splice(index, 1);
       localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
+      localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
       let countBebida = JSON.parse(localStorage.arrayBebidas);
-      $('#resumen-pedido-bebida-total').val(countBebida.join("\n"))
+      $('#resumen-pedido-bebida-total').val(countBebida.join("\n"));
+      const containerDetail = $('.detail-view');
+      containerDetail.empty();
+      let countFinally = JSON.parse(localStorage.arrayFinaly);
+      countFinally.forEach(element => {
+        let templateView = `<div>
+      <p>1 ${element} </p>
+    </div>`;
+        containerDetail.append(templateView);
+      });
     }
   }
 };
 
-// $('#confirm-resume').on('click',function(){
-//   $(location).attr('href', 'views/resume.html');
-
-//   });
 
 
 // Función que inserta los valores con el estilo determinado
 let templateProducts = (element, container) => {
-  let template = ` <div class="row pt-2 ">
-  <div class="col-7">
+  let template = ` <div class="col-6 pt-2 ">
+  <div class="">
     <p class="mb-0 name-product">${element.nombre} S/ ${element.precio}0 </p>
     <p class="f14">${element.description}</p>
-  </div>
-  <div class="col-2 text-right">
+    <div class="row">
+    <div class="col-4 text-right">
     <button class="increment btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} >+</button>
   </div>
-  <div class="col-1" id=${element.title} >0</div>
-  <div class="col-2"><button class="decrement btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type}>-</button>
+  <div class="col-4" id=${element.title} >0</div>
+  <div class="col-4"><button class="decrement btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type}>-</button>
   
+    </div>
+   
   </div>  
-  <div class="border-bot "></div>
+  </div>
+  
+  
 </div>`;
   container.append(template);
 }

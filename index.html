@@ -46,17 +46,15 @@
       </div>
       <div>
         <div class="title-section p-2">Adicionales</div>
-        <div class="container-adicional ">
+        <div class="container-adicional row">
         </div>
       </div>
 
       <div>
         <div class="title-section p-2">Bebidas</div>
-        <div class="container-bebidas ">
+        <div class="container-bebidas row ">
         </div>
-        <div>
-          <input type="checkbox">Helada
-        </div>
+      
       </div>
 
     </section>
@@ -70,14 +68,15 @@
     <!-- Section Confirmar resumen-->
     <section class="detail-css">
       <h5>Detalle de Pedido</h5>
-      <form id="detalle-pedido-final">
-        <textarea type="text" disabled="true" name="detallepedidoBig" id="resumen-pedido-big-total"></textarea>
-        <textarea type="text"  disabled="true" name="detallepedidoFamily" id="resumen-pedido-family-total"></textarea>
-        <textarea type="text"  disabled="true" name="detallepedidoAdicional" id="resumen-pedido-adicional-total"></textarea>
-        <textarea type="text"  disabled="true" name="detallepedidoBebida" id="resumen-pedido-bebida-total"></textarea>
-        <button type="submit"  disabled="true" class="btn-confirm text-center p-2 ">Confirmar
-          <span id="total"></span>
-        </button>
+      <div class="detail-view"></div>
+      <form id="preferencesForm">
+        <input id="resumen-pedido-big-total" type="hidden" name="detallepedidoBig">
+        <input id="resumen-pedido-family-total" type="hidden" name="detallepedidoFamily">
+        <input id="resumen-pedido-adicional-total" type="hidden" name="detallepedidoAdicional">
+        <input id="resumen-pedido-bebida-total" type="hidden" name="detallepedidoBebida">
+        <input type="hidden" name="userId">
+        <input type="hidden" name="blockName">
+        <button type="submit" class="btn-confirm text-center p-2">Confirmar<span id="total"></span></button>
       </form>
     </section>
 
@@ -94,7 +93,8 @@
       <h5 class="subtitle mt-3">Pizzas Grandes</h5>
     </div>
 
-    <div class="container-bigpizza container">
+    <div class=" container">
+      <div class="row container-bigpizza"></div>
     </div>
     <div class="p-2 text-center btn-confirm-pizza confirm-big-js">Confirmar </div>
   </section>
@@ -102,7 +102,10 @@
     <a class="back">Volver</a>
     <div class="container">
       <div class="subtitle">Pizzas Familiares</div>
-      <div class="container-bigfamily container">
+      <div class=" container">
+        <div class="row container-bigfamily">
+
+        </div>
       </div>
     </div>
 

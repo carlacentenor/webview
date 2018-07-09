@@ -55,7 +55,7 @@
         <div class="title-section p-2">
           <div class="row">
             <div class="col-2">
-              <img class="img-icon" src="img/cinnamon-roll.svg" alt="">
+              <img class="img-icon adicion-icon" src="img/cinnamon-roll.svg" alt="">
             </div>
             <div class="col-10"> Adicionales</div>
           </div>
@@ -91,7 +91,13 @@
     <section class="detail-css">
       <h5>Detalle de Pedido</h5>
       <div class="detail-view"></div>
-
+      <div>
+        <p class="delivery">*Costo Delivery : S/ 3.90</p>
+      </div>
+      <div class="num-total-delivery">
+        <span>Total : S/</span>
+        <span id="total">0</span>
+      </div>
     </section>
     <form id="preferencesForm">
       <input id="resumen-pedido-big-total" type="hidden" name="detallepedidoBig">
@@ -100,8 +106,8 @@
       <input id="resumen-pedido-bebida-total" type="hidden" name="detallepedidoBebida">
       <input type="hidden" name="userId">
       <input type="hidden" name="blockName">
-      <button type="submit" class="btn-confirm text-center p-2">Confirmar
-        <span id="total"></span>
+      <button type="submit" class="btn-confirm text-center p-2"  id="config" disabled>Confirmar
+
       </button>
     </form>
 
@@ -109,13 +115,20 @@
   <!-- Section Pizza Grande -->
   <section class="big-pizza-section">
     <div class="container">
-      <div class="mt-2">
+      <div class="mt-2 mb-2">
         <a class="back">
           <span>
             <</span> Volver</a>
       </div>
+      <div class="title-section p-2">
+        <div class="row">
+          <div class="col-2">
+            <img class="img-icon" src="img/pizza.svg" alt="">
+          </div>
+          <div class="col-10"> Pizzas Grandes</div>
+        </div>
+      </div>
 
-      <h5 class="subtitle mt-3">Pizzas Grandes</h5>
     </div>
 
     <div class=" container">
@@ -124,9 +137,21 @@
     <div class="p-2 text-center btn-confirm-pizza confirm-big-js">Confirmar </div>
   </section>
   <section class="family-pizza-section">
-    <a class="back">Volver</a>
+    
     <div class="container">
-      <div class="subtitle">Pizzas Familiares</div>
+        <div class="mt-2 mb-2">
+            <a class="back">
+              <span>
+                <</span> Volver</a>
+          </div>
+        <div class="title-section p-2">
+            <div class="row">
+              <div class="col-2">
+                <img class="img-icon" src="img/pizza.svg" alt="">
+              </div>
+              <div class="col-10"> Pizzas Familiares</div>
+            </div>
+          </div>
       <div class=" container">
         <div class="row container-bigfamily">
 
@@ -134,7 +159,7 @@
       </div>
     </div>
 
-    <div class="p-2 text-center btn-confirm-pizza confirm-family-js">Confirmar </div>
+    <div class="p-2 text-center btn-confirm-pizza confirm-family-js" >Confirmar </div>
   </section>
 
 

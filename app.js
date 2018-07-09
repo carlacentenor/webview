@@ -63,7 +63,7 @@ $(document).on('click', '.increment', function () {
   let number = $(this).context.parentElement.previousElementSibling;
   let btnDecrement = $(this).context.parentElement.previousElementSibling.previousElementSibling.children[0].id;
   if ($(`#${idNumber}`).text() > 0) {
-    $(`#${idNumber}`).css('color', 'red');
+    $(`#${idNumber}`).css('color', '#009774');
     $(`#${btnDecrement}`).addClass('btn-active');
     $(this).addClass('btn-active');
   }
@@ -80,7 +80,7 @@ $(document).on('click', '.decrement', function () {
   let number = $(this).context.parentElement.nextElementSibling;
   let btnDecrement = $(this).context.parentElement.nextElementSibling.nextElementSibling.children[0].id;
   if ($(`#${idNumber}`).text() == 0) {
-    $(`#${idNumber}`).css('color', 'green');
+    $(`#${idNumber}`).css('color', '#009774');
     $(`#${btnDecrement}`).removeClass('btn-active');
     $(this).removeClass('btn-active');
   }
@@ -100,10 +100,20 @@ btnFamilyPizza.on('click', function () {
 })
 
 back.on('click', function () {
+  arrayBigPizza = [];
+  arrayFamilyPizza = [];
+  localStorage.setItem('arrayBigPizza', arrayBigPizza);
+  localStorage.setItem('arrayFamilyPizza', arrayFamilyPizza);
+
   bigPizzaSection.hide();
   familyPizzaSection.hide();
   containerPrincipal.show();
+  $('#total-count-big').text(arrayBigPizza.length);
+  $('#total-count-family').text(arrayFamilyPizza.length);
+  $('.number-span').text(0);
+
 });
+
 
 
 // Eventos confirm Pizzas
@@ -118,18 +128,28 @@ confirmBig.on('click', function () {
   let countFinally = JSON.parse(localStorage.arrayFinaly);
   countFinally.forEach(element => {
     let templateView = `<div>
-    <p>1 ${element} </p>
+    <p class="mb-0">1 ${element} </p>
   </div>`;
     containerDetail.append(templateView);
   });
   if (countPizzaBig.length > 0) {
-    $('#total-count-big').css('color', 'red');
+    $('#total-count-big').css('color', '#009774');
     btnBigPizza.addClass('btn-active');
+
   } else {
     $('#total-count-big').css('color', '#009774');
     btnBigPizza.removeClass('btn-active');
   }
+  
+  if (countFinally.length > 0) {
+    $('#config').removeAttr('disabled');
+    $('#config').css('backgroundColor', '#009774');
+  }
+  if (countFinally.length == 0) {
 
+    $('#config').attr('disabled', true);
+    $('#config').css('backgroundColor', '#A39D9B');
+  }
 });
 
 confirmFamily.on('click', function () {
@@ -143,17 +163,28 @@ confirmFamily.on('click', function () {
   let countFinally = JSON.parse(localStorage.arrayFinaly);
   countFinally.forEach(element => {
     let templateView = `<div>
-    <p>1 ${element} </p>
+    <p class="mb-0">1 ${element} </p>
   </div>`;
     containerDetail.append(templateView);
   });
   if (countPizzaFamily.length > 0) {
-    $('#total-count-family').css('color', 'red');
+    $('#total-count-family').css('color', '#009774');
     btnFamilyPizza.addClass('btn-active');
   } else {
     $('#total-count-family').css('color', '#009774');
     btnFamilyPizza.removeClass('btn-active');
   }
+  
+  if (countFinally.length > 0) {
+    $('#config').removeAttr('disabled');
+    $('#config').css('backgroundColor', '#009774');
+  }
+  if (countFinally.length == 0) {
+
+    $('#config').attr('disabled', true);
+    $('#config').css('backgroundColor', '#A39D9B');
+  }
+
 });
 
 
@@ -167,7 +198,11 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
   $(`#${idNumberBox}`).text(number); // mostrando valores
   let final = parseFloat(price) + parseFloat(totalPedido);
   localStorage.setItem('totalFinal', final.toFixed(1));
-  showTotal.text(localStorage.getItem('totalFinal'));
+  let totalSum = (parseFloat(localStorage.getItem('totalFinal')));
+  let delivery = 3.90;
+  let sumDelivery = totalSum + delivery
+
+  showTotal.text(sumDelivery.toFixed(1));
   if (type == 'grande') {
     arrayBigPizza.push(detail);
     arrayFinaly.push(detail);
@@ -179,6 +214,7 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
     arrayFinaly.push(detail);
     localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
     localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
+   
   }
   if (type == 'adicional') {
     arrayAdicional.push(detail);
@@ -190,9 +226,13 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
     const containerDetail = $('.detail-view');
     containerDetail.empty();
     let countFinally = JSON.parse(localStorage.arrayFinaly);
+    if (countFinally.length > 0) {
+      $('#config').removeAttr('disabled');
+      $('#config').css('backgroundColor', '#009774');
+    }
     countFinally.forEach(element => {
       let templateView = `<div>
-    <p>1 ${element} </p>
+    <p class="mb-0">1 ${element} </p>
   </div>`;
       containerDetail.append(templateView);
     });
@@ -207,9 +247,14 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
     const containerDetail = $('.detail-view');
     containerDetail.empty();
     let countFinally = JSON.parse(localStorage.arrayFinaly);
+    if (countFinally.length > 0) {
+      $('#config').removeAttr('disabled');
+      $('#config').css('backgroundColor', '#009774');
+    }
+
     countFinally.forEach(element => {
       let templateView = `<div>
-    <p>1 ${element} </p>
+    <p class="mb-0">1 ${element} </p>
   </div>`;
       containerDetail.append(templateView);
     });
@@ -245,6 +290,7 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       arrayFinaly.splice(index, 1);
       localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
+
     }
     if (type == 'adicional') {
       let index = arrayAdicional.indexOf(detail);
@@ -258,9 +304,14 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       const containerDetail = $('.detail-view');
       containerDetail.empty();
       let countFinally = JSON.parse(localStorage.arrayFinaly);
+      if (countFinally.length == 0) {
+
+        $('#config').attr('disabled', true);
+        $('#config').css('backgroundColor', '#A39D9B');
+      }
       countFinally.forEach(element => {
         let templateView = `<div>
-      <p>1 ${element} </p>
+      <p class="mb-0">1 ${element} </p>
     </div>`;
         containerDetail.append(templateView);
       });
@@ -278,9 +329,14 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       const containerDetail = $('.detail-view');
       containerDetail.empty();
       let countFinally = JSON.parse(localStorage.arrayFinaly);
+      if (countFinally.length == 0) {
+
+        $('#config').attr('disabled', true);
+        $('#config').css('backgroundColor', '#A39D9B');
+      }
       countFinally.forEach(element => {
         let templateView = `<div>
-      <p>1 ${element} </p>
+      <p class="mb-0">1 ${element} </p>
     </div>`;
         containerDetail.append(templateView);
       });
@@ -318,24 +374,24 @@ let templateProducts = (element, container) => {
 }
 
 
-    // {
-        //   "id": "4b",
-        //   "id2": "4bd",
-        //   "nombre": "Inca Kola Sin Azúcar",
-        //   "title": "inkacolasinazucar",
-        //   "description": "Inca Kola sin azúcar de 1,5L ",
-        //   "precio": 7.90,
-        //   "type" : "bebida",
-        //   "detail" : "Inka Cola Sin Azúcar a S/ 7.90",
-        //   "img" : "https://user-images.githubusercontent.com/32285482/42459983-765ec478-8362-11e8-94e4-b56b497ed3cd.png"
-        // }// {
-        //   "id": "2b",
-        //   "id2": "2bd",
-        //   "nombre": "Coca Cola Sin Azúcar",
-        //   "title": "cocacolasinazucar",
-        //   "description": "Coca Cola sin azúcar de 1,5L ",
-        //   "precio": 7.90,
-        //   "type" : "bebida",
-        //   "detail" : "Coca Cola Sin Azúcar a S/ 7.90",
-        //   "img" :"https://user-images.githubusercontent.com/32285482/42459977-73f94172-8362-11e8-8a3b-3ae08de28631.png"
-        // },
+// {
+//   "id": "4b",
+//   "id2": "4bd",
+//   "nombre": "Inca Kola Sin Azúcar",
+//   "title": "inkacolasinazucar",
+//   "description": "Inca Kola sin azúcar de 1,5L ",
+//   "precio": 7.90,
+//   "type" : "bebida",
+//   "detail" : "Inka Cola Sin Azúcar a S/ 7.90",
+//   "img" : "https://user-images.githubusercontent.com/32285482/42459983-765ec478-8362-11e8-94e4-b56b497ed3cd.png"
+// }// {
+//   "id": "2b",
+//   "id2": "2bd",
+//   "nombre": "Coca Cola Sin Azúcar",
+//   "title": "cocacolasinazucar",
+//   "description": "Coca Cola sin azúcar de 1,5L ",
+//   "precio": 7.90,
+//   "type" : "bebida",
+//   "detail" : "Coca Cola Sin Azúcar a S/ 7.90",
+//   "img" :"https://user-images.githubusercontent.com/32285482/42459977-73f94172-8362-11e8-8a3b-3ae08de28631.png"
+// },

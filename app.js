@@ -385,10 +385,10 @@ let templateProducts = (element, container) => {
     <p class="f14 text-center">${element.description}</p>
     <div class="row">
     <div class="col-4 offset-1 text-right">
-    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" >-</button>
+    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" ><i class="fas fa-minus"></i></button>
   </div>
   <div class="col-2 text-center number-span" id=${element.title} >0</div>
-  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" >+</button>
+  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" ><i class="fas fa-plus"></i></button>
   
     </div>
    
@@ -407,13 +407,13 @@ let templateBebidas = (element, container) => {
   let template = ` <div class="col-6 pt-2 ">
   <div class="mb-2">
     <p class=" name-product text-center mb-0">${element.nombre} 1,5L </p>
-    <p class="f14 text-center subtitle-product-ab"> S/ ${element.precio}0</p>
+    <p class="f14 text-center subtitle-product-ab mb-0"> S/ ${element.precio}0</p>
     <div class="row">
     <div class="col-4 offset-1 text-right">
-    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" >-</button>
+    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" ><i class="fas fa-minus"></i></button>
   </div>
   <div class="col-2 text-center number-span" id=${element.title} >0</div>
-  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" >+</button>
+  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" ><i class="fas fa-plus"></i></button>
   
     </div>
    
@@ -441,13 +441,13 @@ let templateAdicional = (element, container) => {
   <div class="mb-2">
     <p class="mb-0 name-product text-center">${element.nombre}  </p>
     
-    <p class="f14 text-center subtitle-product-ab">${element.detail}</p>
+    <p class="f14 text-center subtitle-product-ab mb-0">${element.detail}</p>
     <div class="row">
     <div class="col-4 offset-1 text-right">
-    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" >-</button>
+    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" ><i class="fas fa-minus"></i></button>
   </div>
   <div class="col-2 text-center number-span" id=${element.title} >0</div>
-  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" >+</button>
+  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" ><i class="fas fa-plus"></i></button>
   
     </div>
    

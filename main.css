@@ -63,6 +63,7 @@
   width: 35px;
   font-size: 18px;
   outline: none;
+  border-radius: 8px
 }
 
 .border-bot {
@@ -106,7 +107,7 @@
   background-color: var(--green);
 }
 
-.container-bigpizza {
+.container-bigpizza,.container-bigfamily {
   color: #898989;
 }
 
@@ -163,7 +164,8 @@ textarea {
 
 .subtitle-product-ab{
   color: var(--darkgrey);
-  font-size: 14px;
+  font-size: 16px;
   position: relative;
   top: -8px;
 }
+

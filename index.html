@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   <link rel="stylesheet" href="main.css">
   <title>Papa John's</title>
 </head>
@@ -20,32 +21,34 @@
           <div class="col-2">
             <img class="img-icon" src="img/pizza.svg" alt="">
           </div>
-          <div class="col-10"> Pizzas</div>
+          <div class="col-10 pl-1"> Pizzas</div>
         </div>
 
 
       </div>
-      <div class="container mb-3">
-        <div class="row pt-2 pb-2 pl-0 pr-2">
+      <div class="container mb-4 mt-3">
+        <div class="row pt-2 pb-2 pl-0 pr-2 line-b">
 
-          <div class="col-8 name-product">
-            Pizzas Grandes (8 slices)
+          <div class="col-9 ">
+           <p class="name-product mb-0"> Pizzas Grandes </p>
+           <p class="mb-0 subtitle-product">Deliciosa pizza de 8 slices desde S/40.90 </p>
           </div>
-          <div class="col-4 text-right pr-0">
+          <div class="col-3 text-right pr-0">
             <span id="total-count-big" class="number-span">0</span>
-            <button class="btn-general ml-3" id="btn-big-pizza">
-              +
+            <button class="btn-general ml-1" id="btn-big-pizza">
+              <i class="fas fa-angle-right"></i>
             </button>
           </div>
         </div>
-        <div class="row pt-2 pb-2 pl-0 pr-2">
-          <div class="col-8 name-product">
-            Pizzas Familiares (10 slices)
+        <div class="row pt-2 pb-2 pl-0 pr-2 line-b">
+          <div class="col-9 ">
+            <p class="name-product mb-0"> Pizzas Familiares </p>
+            <p class="mb-0 subtitle-product">Deliciosa pizza de 10 slices desde S/50.90 </p>
           </div>
-          <div class="col-4 text-right pr-0">
+          <div class="col-3 text-right pr-0">
             <span id="total-count-family" class="number-span">0</span>
-            <button class="btn-general ml-3" id="btn-family-pizza">
-              +
+            <button class="btn-general ml-1" id="btn-family-pizza">
+              <i class="fas fa-angle-right"></i>
             </button>
           </div>
         </div>
@@ -57,7 +60,7 @@
             <div class="col-2">
               <img class="img-icon adicion-icon" src="img/cinnamon-roll.svg" alt="">
             </div>
-            <div class="col-10"> Adicionales</div>
+            <div class="col-10 pl-1"> Adicionales</div>
           </div>
 
         </div>
@@ -71,7 +74,7 @@
             <div class="col-2">
               <img class="img-icon" src="img/soda.svg" alt="">
             </div>
-            <div class="col-10"> Bebidas</div>
+            <div class="col-10 pl-1"> Bebidas</div>
           </div>
         </div>
         <div class="container-bebidas row ">
@@ -89,7 +92,8 @@
 
     <!-- Section Confirmar resumen-->
     <section class="detail-css">
-      <h5>Detalle de Pedido</h5>
+      <h5 class="mb-0">Detalle de Pedido</h5>
+      <div class="line"></div>
       <div class="detail-view"></div>
       <div>
         <p class="delivery">*Costo Delivery : S/ 3.90</p>

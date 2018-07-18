@@ -1,5 +1,5 @@
 let totalFinal = 0;
-
+let iceDrink = 'Sin Helar';
 localStorage.setItem('totalFinal', totalFinal);
 
 //  DOM
@@ -44,13 +44,31 @@ $.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', functi
     templateProducts(element, containerFamily);
   });
   adicionales.forEach(element => {
-    templateProducts(element, containerAdicion);
+    templateAdicional(element, containerAdicion);
   });
   drinks.forEach(element => {
-    templateProducts(element, containerBebidas);
+    templateBebidas(element, containerBebidas);
   });
 
 });
+
+$(document).on('click', '.form-check-input', function () {
+ 
+  let value = $(this).context.checked;
+  if (value) {
+    iceDrink = 'Helada'
+    $(`.info-temperature`).text('*Bebida Helada');
+    let countBebida = JSON.parse(localStorage.arrayBebidas);
+    $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
+  } else {
+    iceDrink = 'Sin Helar';
+    let countBebida = JSON.parse(localStorage.arrayBebidas);
+    $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
+    $(`.info-temperature`).text('')
+
+  }
+});
+
 
 //Eventos + / -
 $(document).on('click', '.increment', function () {
@@ -140,7 +158,7 @@ confirmBig.on('click', function () {
     $('#total-count-big').css('color', '#009774');
     btnBigPizza.removeClass('btn-active');
   }
-  
+
   if (countFinally.length > 0) {
     $('#config').removeAttr('disabled');
     $('#config').css('backgroundColor', '#009774');
@@ -174,7 +192,7 @@ confirmFamily.on('click', function () {
     $('#total-count-family').css('color', '#009774');
     btnFamilyPizza.removeClass('btn-active');
   }
-  
+
   if (countFinally.length > 0) {
     $('#config').removeAttr('disabled');
     $('#config').css('backgroundColor', '#009774');
@@ -203,6 +221,8 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
   let sumDelivery = totalSum + delivery
 
   showTotal.text(sumDelivery.toFixed(1));
+  // almacenando data de costo total
+  $('#resumen-money-total').val(sumDelivery.toFixed(1));
   if (type == 'grande') {
     arrayBigPizza.push(detail);
     arrayFinaly.push(detail);
@@ -214,7 +234,7 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
     arrayFinaly.push(detail);
     localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
     localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
-   
+
   }
   if (type == 'adicional') {
     arrayAdicional.push(detail);
@@ -243,18 +263,19 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
     localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
     localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
     let countBebida = JSON.parse(localStorage.arrayBebidas);
-    $('#resumen-pedido-bebida-total').val(countBebida.join("\n"));
+    $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
     const containerDetail = $('.detail-view');
     containerDetail.empty();
+    console.log(iceDrink)
     let countFinally = JSON.parse(localStorage.arrayFinaly);
     if (countFinally.length > 0) {
       $('#config').removeAttr('disabled');
       $('#config').css('backgroundColor', '#009774');
     }
 
-    countFinally.forEach(element => {
+    countFinally.forEach((element,index) => {
       let templateView = `<div>
-    <p class="mb-0">1 ${element} </p>
+      <p class="mb-0">1 ${element}</p>
   </div>`;
       containerDetail.append(templateView);
     });
@@ -272,6 +293,13 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
     let final = parseFloat(totalPedido) - parseFloat(price);
     localStorage.setItem('totalFinal', final.toFixed(1));
     showTotal.text(localStorage.getItem('totalFinal'));
+    let totalSum = (parseFloat(localStorage.getItem('totalFinal')));
+    let delivery = 3.90;
+    let sumDelivery = totalSum + delivery
+
+    showTotal.text(sumDelivery.toFixed(1));
+    // almacenando data de costo total
+    $('#resumen-money-total').val(sumDelivery.toFixed(1));
 
 
     // Encontrar el valor y eliminarlo
@@ -279,7 +307,7 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       let index = arrayBigPizza.indexOf(detail);
       let indexDetail = arrayFinaly.indexOf(detail);
       arrayBigPizza.splice(index, 1);
-      arrayFinaly.splice(index, 1);
+      arrayFinaly.splice(indexDetail, 1);
       localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
     }
@@ -287,7 +315,7 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       let index = arrayFamilyPizza.indexOf(detail);
       let indexDetail = arrayFinaly.indexOf(detail);
       arrayFamilyPizza.splice(index, 1);
-      arrayFinaly.splice(index, 1);
+      arrayFinaly.splice(indexDetail, 1);
       localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
 
@@ -296,7 +324,7 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       let index = arrayAdicional.indexOf(detail);
       let indexDetail = arrayFinaly.indexOf(detail);
       arrayAdicional.splice(index, 1);
-      arrayFinaly.splice(index, 1);
+      arrayFinaly.splice(indexDetail, 1);
       localStorage.setItem('arrayAdicional', JSON.stringify(arrayAdicional));
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
       let countAdicional = JSON.parse(localStorage.arrayAdicional);
@@ -321,11 +349,12 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       let index = arrayBebidas.indexOf(detail);
       let indexDetail = arrayFinaly.indexOf(detail);
       arrayBebidas.splice(index, 1);
-      arrayFinaly.splice(index, 1);
+      arrayFinaly.splice(indexDetail, 1);
       localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
       let countBebida = JSON.parse(localStorage.arrayBebidas);
-      $('#resumen-pedido-bebida-total').val(countBebida.join("\n"));
+      
+      $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
       const containerDetail = $('.detail-view');
       containerDetail.empty();
       let countFinally = JSON.parse(localStorage.arrayFinaly);
@@ -336,7 +365,7 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       }
       countFinally.forEach(element => {
         let templateView = `<div>
-      <p class="mb-0">1 ${element} </p>
+        <p class="mb-0">1 ${element}  </p>
     </div>`;
         containerDetail.append(templateView);
       });
@@ -373,25 +402,61 @@ let templateProducts = (element, container) => {
   container.append(template);
 }
 
+// Template Bebidas
+let templateBebidas = (element, container) => {
+  let template = ` <div class="col-6 pt-2 ">
+  <div class="mb-2">
+    <p class=" name-product text-center mb-0">${element.nombre} 1,5L </p>
+    <p class="f14 text-center subtitle-product-ab"> S/ ${element.precio}0</p>
+    <div class="row">
+    <div class="col-4 offset-1 text-right">
+    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" >-</button>
+  </div>
+  <div class="col-2 text-center number-span" id=${element.title} >0</div>
+  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" >+</button>
+  
+    </div>
+   
+  </div> 
+  <div class="container mt-2">
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1${element.title}" value="Helada">
+    <label class="form-check-label" for="exampleCheck1${element.title}" value="helada">Helada</label>
+  </div>
+  </div>
 
-// {
-//   "id": "4b",
-//   "id2": "4bd",
-//   "nombre": "Inca Kola Sin Azúcar",
-//   "title": "inkacolasinazucar",
-//   "description": "Inca Kola sin azúcar de 1,5L ",
-//   "precio": 7.90,
-//   "type" : "bebida",
-//   "detail" : "Inka Cola Sin Azúcar a S/ 7.90",
-//   "img" : "https://user-images.githubusercontent.com/32285482/42459983-765ec478-8362-11e8-94e4-b56b497ed3cd.png"
-// }// {
-//   "id": "2b",
-//   "id2": "2bd",
-//   "nombre": "Coca Cola Sin Azúcar",
-//   "title": "cocacolasinazucar",
-//   "description": "Coca Cola sin azúcar de 1,5L ",
-//   "precio": 7.90,
-//   "type" : "bebida",
-//   "detail" : "Coca Cola Sin Azúcar a S/ 7.90",
-//   "img" :"https://user-images.githubusercontent.com/32285482/42459977-73f94172-8362-11e8-8a3b-3ae08de28631.png"
-// },
+    <div class="mt-2"><img class="img-fluid" src="${element.img}" ></div>
+    
+  </div>
+  
+  
+</div>`;
+  container.append(template);
+}
+
+
+// Template Bebidas
+let templateAdicional = (element, container) => {
+  let template = ` <div class="col-6 pt-2 ">
+  <div class="mb-2">
+    <p class="mb-0 name-product text-center">${element.nombre}  </p>
+    
+    <p class="f14 text-center subtitle-product-ab">${element.detail}</p>
+    <div class="row">
+    <div class="col-4 offset-1 text-right">
+    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" >-</button>
+  </div>
+  <div class="col-2 text-center number-span" id=${element.title} >0</div>
+  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" >+</button>
+  
+    </div>
+   
+  </div> 
+    <div class="mt-2"><img class="img-fluid" src="${element.img}" ></div>
+    
+  </div>
+  
+  
+</div>`;
+  container.append(template);
+}

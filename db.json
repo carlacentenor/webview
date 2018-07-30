@@ -168,7 +168,7 @@
         "description": "6 riquísimos rolls de pepperoni enrollados con nuestra masa especial",
         "precio": 10.90,
         "type" : "adicional",
-        "detail" : "6 Pepperoni rolls a S/ 10.90",
+        "detail" : "Pepperoni rolls a S/ 10.90",
         "img":"https://user-images.githubusercontent.com/32285482/42459646-b601f7c2-8361-11e8-8dd0-9267a4eb495d.jpg"
       },
       {
@@ -179,7 +179,7 @@
         "description": "6 alitas de pollo asadas al horno, servidas con nuestra inigualable salsa BBQ",
         "precio": 12.90,
         "type" : "adicional",
-        "detail" : "6 Wings a S/ 12.90",
+        "detail" : "Wings a S/ 12.90",
         "img": "https://user-images.githubusercontent.com/32285482/42459656-baeaea64-8361-11e8-9359-9394f6a91cd5.jpg"
       }],
       "bebidas": [{

@@ -46,13 +46,20 @@ $.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', functi
     templateProducts(element, containerFamily);
   });
   adicionales.forEach(element => {
-    templateProducts(element, containerAdicion);
+    templateAdicional(element, containerAdicion);
   });
+<<<<<<< HEAD
 
+=======
+  drinks.forEach(element => {
+    templateBebidas(element, containerBebidas);
+  });
+>>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
 
 });
 
 $(document).on('click', '.form-check-input', function () {
+<<<<<<< HEAD
   let tempe = $('#resumen-temperatura');
   let value = $(this).context.checked;
   if (value) {
@@ -63,10 +70,28 @@ $(document).on('click', '.form-check-input', function () {
     iceDrink = 'Sin Helar';
     tempe.val("");
     $(`.info-temperature`).text('*Bebidas Sin Helar')
+=======
+ 
+  let value = $(this).context.checked;
+  if (value) {
+    iceDrink = 'Helada'
+    $(`.info-temperature`).text('*Bebida Helada');
+    let countBebida = JSON.parse(localStorage.arrayBebidas);
+    $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
+  } else {
+    iceDrink = 'Sin Helar';
+    let countBebida = JSON.parse(localStorage.arrayBebidas);
+    $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
+    $(`.info-temperature`).text('')
+>>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
 
   }
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
 //Eventos + / -
 $(document).on('click', '.increment', function () {
   let price = $(this).data('precio');
@@ -252,9 +277,15 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
     localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
     localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
     let countBebida = JSON.parse(localStorage.arrayBebidas);
+<<<<<<< HEAD
     // $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
     const containerDetail = $('.detail-view');
 
+=======
+    $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
+    const containerDetail = $('.detail-view');
+    containerDetail.empty();
+>>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
     console.log(iceDrink)
     let countFinally = JSON.parse(localStorage.arrayFinaly);
     let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
@@ -264,7 +295,16 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
       $('#config').css('backgroundColor', '#009774');
     }
 
+<<<<<<< HEAD
     templateDetail(countFinally);
+=======
+    countFinally.forEach((element,index) => {
+      let templateView = `<div>
+      <p class="mb-0">1 ${element}</p>
+  </div>`;
+      containerDetail.append(templateView);
+    });
+>>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
   }
 
 };
@@ -279,6 +319,13 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
     let final = parseFloat(totalPedido) - parseFloat(price);
     localStorage.setItem('totalFinal', final.toFixed(1));
     showTotal.text(localStorage.getItem('totalFinal'));
+    let totalSum = (parseFloat(localStorage.getItem('totalFinal')));
+    let delivery = 3.90;
+    let sumDelivery = totalSum + delivery
+
+    showTotal.text(sumDelivery.toFixed(1));
+    // almacenando data de costo total
+    $('#resumen-money-total').val(sumDelivery.toFixed(1));
 
 
     let totalSum = (parseFloat(localStorage.getItem('totalFinal')));
@@ -337,19 +384,36 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       arrayFinaly.splice(indexDetail, 1);
       localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
+<<<<<<< HEAD
       let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
       $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
       //  $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
 
 
+=======
+      let countBebida = JSON.parse(localStorage.arrayBebidas);
+      
+      $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
+      const containerDetail = $('.detail-view');
+      containerDetail.empty();
+>>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
       let countFinally = JSON.parse(localStorage.arrayFinaly);
       if (countFinally.length == 0) {
 
         $('#config').attr('disabled', true);
         $('#config').css('backgroundColor', '#A39D9B');
       }
+<<<<<<< HEAD
       templateDetail(countFinally);
 
+=======
+      countFinally.forEach(element => {
+        let templateView = `<div>
+        <p class="mb-0">1 ${element}  </p>
+    </div>`;
+        containerDetail.append(templateView);
+      });
+>>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
     }
   }
 };
@@ -366,10 +430,10 @@ let templateProducts = (element, container) => {
     <p class="f14 text-center">${element.description}</p>
     <div class="row">
     <div class="col-4 offset-1 text-right">
-    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" >-</button>
+    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" ><i class="fas fa-minus"></i></button>
   </div>
   <div class="col-2 text-center number-span" id=${element.title} >0</div>
-  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" >+</button>
+  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" ><i class="fas fa-plus"></i></button>
   
     </div>
    
@@ -383,6 +447,39 @@ let templateProducts = (element, container) => {
   container.append(template);
 }
 
+// Template Bebidas
+let templateBebidas = (element, container) => {
+  let template = ` <div class="col-6 pt-2 ">
+  <div class="mb-2">
+    <p class=" name-product text-center mb-0">${element.nombre} 1,5L </p>
+    <p class="f14 text-center subtitle-product-ab mb-0"> S/ ${element.precio}0</p>
+    <div class="row">
+    <div class="col-4 offset-1 text-right">
+    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" ><i class="fas fa-minus"></i></button>
+  </div>
+  <div class="col-2 text-center number-span" id=${element.title} >0</div>
+  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" ><i class="fas fa-plus"></i></button>
+  
+    </div>
+   
+  </div> 
+  <div class="container mt-2">
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1${element.title}" value="Helada">
+    <label class="form-check-label" for="exampleCheck1${element.title}" value="helada">Helada</label>
+  </div>
+  </div>
+
+    <div class="mt-2"><img class="img-fluid" src="${element.img}" ></div>
+    
+  </div>
+  
+  
+</div>`;
+  container.append(template);
+}
+
+<<<<<<< HEAD
 // template detalle item
 function templateDetail(array) {
   containerDetail.empty();
@@ -392,4 +489,31 @@ function templateDetail(array) {
 </div>`;
     containerDetail.append(templateView);
   });
+=======
+
+// Template Bebidas
+let templateAdicional = (element, container) => {
+  let template = ` <div class="col-6 pt-2 ">
+  <div class="mb-2">
+    <p class="mb-0 name-product text-center">${element.nombre}  </p>
+    
+    <p class="f14 text-center subtitle-product-ab mb-0">${element.detail}</p>
+    <div class="row">
+    <div class="col-4 offset-1 text-right">
+    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" ><i class="fas fa-minus"></i></button>
+  </div>
+  <div class="col-2 text-center number-span" id=${element.title} >0</div>
+  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" ><i class="fas fa-plus"></i></button>
+  
+    </div>
+   
+  </div> 
+    <div class="mt-2"><img class="img-fluid" src="${element.img}" ></div>
+    
+  </div>
+  
+  
+</div>`;
+  container.append(template);
+>>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
 }

@@ -1,5 +1,5 @@
 let totalFinal = 0;
-
+let iceDrink = 'Sin Helar';
 localStorage.setItem('totalFinal', totalFinal);
 
 //  DOM
@@ -8,6 +8,7 @@ const containerBig = $('.container-bigpizza');
 const containerFamily = $('.container-bigfamily');
 const containerAdicion = $('.container-adicional');
 const containerBebidas = $('.container-bebidas');
+const containerDetail = $('.detail-view');
 // botons add Pizzas big/family
 const btnBigPizza = $('#btn-big-pizza');
 const btnFamilyPizza = $('#btn-family-pizza');
@@ -28,6 +29,7 @@ let arrayFamilyPizza = [];
 let arrayAdicional = [];
 let arrayBebidas = [];
 let arrayFinaly = [];
+let arraySendInfo = [];
 //hidden section big  /family
 bigPizzaSection.hide();
 familyPizzaSection.hide();
@@ -36,7 +38,7 @@ $.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', functi
   let pizzaBig = data.products.pizzas.grandes;
   let pizzaFamily = data.products.pizzas.familiares;
   let adicionales = data.products.adicionales;
-  let drinks = data.products.bebidas;
+
   pizzaBig.forEach(element => {
     templateProducts(element, containerBig);
   });
@@ -46,10 +48,23 @@ $.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', functi
   adicionales.forEach(element => {
     templateProducts(element, containerAdicion);
   });
-  drinks.forEach(element => {
-    templateProducts(element, containerBebidas);
-  });
 
+
+});
+
+$(document).on('click', '.form-check-input', function () {
+  let tempe = $('#resumen-temperatura');
+  let value = $(this).context.checked;
+  if (value) {
+    iceDrink = 'Helada'
+    $(`.info-temperature`).text('*Bebidas Heladas');
+    tempe.val(`${iceDrink}`);
+  } else {
+    iceDrink = 'Sin Helar';
+    tempe.val("");
+    $(`.info-temperature`).text('*Bebidas Sin Helar')
+
+  }
 });
 
 //Eventos + / -
@@ -122,16 +137,14 @@ confirmBig.on('click', function () {
   $('#total-count-big').text(countPizzaBig.length);
   bigPizzaSection.hide();
   containerPrincipal.show();
-  $('#resumen-pedido-big-total').val(countPizzaBig.join("\n"))
-  const containerDetail = $('.detail-view');
-  containerDetail.empty();
+  // $('#resumen-pedido-big-total').val(countPizzaBig.join("\n"))
+
+
+
   let countFinally = JSON.parse(localStorage.arrayFinaly);
-  countFinally.forEach(element => {
-    let templateView = `<div>
-    <p class="mb-0">1 ${element} </p>
-  </div>`;
-    containerDetail.append(templateView);
-  });
+  let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
+  $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
+  templateDetail(countFinally);
   if (countPizzaBig.length > 0) {
     $('#total-count-big').css('color', '#009774');
     btnBigPizza.addClass('btn-active');
@@ -140,7 +153,7 @@ confirmBig.on('click', function () {
     $('#total-count-big').css('color', '#009774');
     btnBigPizza.removeClass('btn-active');
   }
-  
+
   if (countFinally.length > 0) {
     $('#config').removeAttr('disabled');
     $('#config').css('backgroundColor', '#009774');
@@ -157,16 +170,13 @@ confirmFamily.on('click', function () {
   $('#total-count-family').text(countPizzaFamily.length);
   familyPizzaSection.hide();
   containerPrincipal.show();
-  $('#resumen-pedido-family-total').val(countPizzaFamily.join("\n"));
-  const containerDetail = $('.detail-view');
-  containerDetail.empty();
+  // $('#resumen-pedido-family-total').val(countPizzaFamily.join("\n"));
+
+
   let countFinally = JSON.parse(localStorage.arrayFinaly);
-  countFinally.forEach(element => {
-    let templateView = `<div>
-    <p class="mb-0">1 ${element} </p>
-  </div>`;
-    containerDetail.append(templateView);
-  });
+  let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
+  $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
+  templateDetail(countFinally);
   if (countPizzaFamily.length > 0) {
     $('#total-count-family').css('color', '#009774');
     btnFamilyPizza.addClass('btn-active');
@@ -174,7 +184,7 @@ confirmFamily.on('click', function () {
     $('#total-count-family').css('color', '#009774');
     btnFamilyPizza.removeClass('btn-active');
   }
-  
+
   if (countFinally.length > 0) {
     $('#config').removeAttr('disabled');
     $('#config').css('backgroundColor', '#009774');
@@ -203,6 +213,8 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
   let sumDelivery = totalSum + delivery
 
   showTotal.text(sumDelivery.toFixed(1));
+  // almacenando data de costo total
+  $('#resumen-money-total').val(sumDelivery.toFixed(1));
   if (type == 'grande') {
     arrayBigPizza.push(detail);
     arrayFinaly.push(detail);
@@ -214,7 +226,7 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
     arrayFinaly.push(detail);
     localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
     localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
-   
+
   }
   if (type == 'adicional') {
     arrayAdicional.push(detail);
@@ -222,20 +234,17 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
     localStorage.setItem('arrayAdicional', JSON.stringify(arrayAdicional));
     localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
     let countAdicional = JSON.parse(localStorage.arrayAdicional);
-    $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"));
+    //  $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"));
     const containerDetail = $('.detail-view');
-    containerDetail.empty();
+
     let countFinally = JSON.parse(localStorage.arrayFinaly);
+    let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
+    $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
     if (countFinally.length > 0) {
       $('#config').removeAttr('disabled');
       $('#config').css('backgroundColor', '#009774');
     }
-    countFinally.forEach(element => {
-      let templateView = `<div>
-    <p class="mb-0">1 ${element} </p>
-  </div>`;
-      containerDetail.append(templateView);
-    });
+    templateDetail(countFinally);
   }
   if (type == 'bebida') {
     arrayBebidas.push(detail);
@@ -243,21 +252,19 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
     localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
     localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
     let countBebida = JSON.parse(localStorage.arrayBebidas);
-    $('#resumen-pedido-bebida-total').val(countBebida.join("\n"));
+    // $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
     const containerDetail = $('.detail-view');
-    containerDetail.empty();
+
+    console.log(iceDrink)
     let countFinally = JSON.parse(localStorage.arrayFinaly);
+    let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
+    $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
     if (countFinally.length > 0) {
       $('#config').removeAttr('disabled');
       $('#config').css('backgroundColor', '#009774');
     }
 
-    countFinally.forEach(element => {
-      let templateView = `<div>
-    <p class="mb-0">1 ${element} </p>
-  </div>`;
-      containerDetail.append(templateView);
-    });
+    templateDetail(countFinally);
   }
 
 };
@@ -274,12 +281,21 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
     showTotal.text(localStorage.getItem('totalFinal'));
 
 
+    let totalSum = (parseFloat(localStorage.getItem('totalFinal')));
+    let delivery = 3.90;
+    let sumDelivery = totalSum + delivery
+
+    showTotal.text(sumDelivery.toFixed(1));
+    // almacenando data de costo total
+    $('#resumen-money-total').val(sumDelivery.toFixed(1));
+
+
     // Encontrar el valor y eliminarlo
     if (type == 'grande') {
       let index = arrayBigPizza.indexOf(detail);
       let indexDetail = arrayFinaly.indexOf(detail);
       arrayBigPizza.splice(index, 1);
-      arrayFinaly.splice(index, 1);
+      arrayFinaly.splice(indexDetail, 1);
       localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
     }
@@ -287,7 +303,7 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       let index = arrayFamilyPizza.indexOf(detail);
       let indexDetail = arrayFinaly.indexOf(detail);
       arrayFamilyPizza.splice(index, 1);
-      arrayFinaly.splice(index, 1);
+      arrayFinaly.splice(indexDetail, 1);
       localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
 
@@ -296,50 +312,44 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       let index = arrayAdicional.indexOf(detail);
       let indexDetail = arrayFinaly.indexOf(detail);
       arrayAdicional.splice(index, 1);
-      arrayFinaly.splice(index, 1);
+      arrayFinaly.splice(indexDetail, 1);
       localStorage.setItem('arrayAdicional', JSON.stringify(arrayAdicional));
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
       let countAdicional = JSON.parse(localStorage.arrayAdicional);
-      $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"));
-      const containerDetail = $('.detail-view');
-      containerDetail.empty();
+      // $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"));
+
+
       let countFinally = JSON.parse(localStorage.arrayFinaly);
+      let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
+      $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
       if (countFinally.length == 0) {
 
         $('#config').attr('disabled', true);
         $('#config').css('backgroundColor', '#A39D9B');
       }
-      countFinally.forEach(element => {
-        let templateView = `<div>
-      <p class="mb-0">1 ${element} </p>
-    </div>`;
-        containerDetail.append(templateView);
-      });
+      templateDetail(countFinally);
 
     }
     if (type == 'bebida') {
       let index = arrayBebidas.indexOf(detail);
       let indexDetail = arrayFinaly.indexOf(detail);
       arrayBebidas.splice(index, 1);
-      arrayFinaly.splice(index, 1);
+      arrayFinaly.splice(indexDetail, 1);
       localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
-      let countBebida = JSON.parse(localStorage.arrayBebidas);
-      $('#resumen-pedido-bebida-total').val(countBebida.join("\n"));
-      const containerDetail = $('.detail-view');
-      containerDetail.empty();
+      let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
+      $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
+      //  $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
+
+
       let countFinally = JSON.parse(localStorage.arrayFinaly);
       if (countFinally.length == 0) {
 
         $('#config').attr('disabled', true);
         $('#config').css('backgroundColor', '#A39D9B');
       }
-      countFinally.forEach(element => {
-        let templateView = `<div>
-      <p class="mb-0">1 ${element} </p>
-    </div>`;
-        containerDetail.append(templateView);
-      });
+      templateDetail(countFinally);
+
     }
   }
 };
@@ -373,25 +383,13 @@ let templateProducts = (element, container) => {
   container.append(template);
 }
 
-
-// {
-//   "id": "4b",
-//   "id2": "4bd",
-//   "nombre": "Inca Kola Sin Azúcar",
-//   "title": "inkacolasinazucar",
-//   "description": "Inca Kola sin azúcar de 1,5L ",
-//   "precio": 7.90,
-//   "type" : "bebida",
-//   "detail" : "Inka Cola Sin Azúcar a S/ 7.90",
-//   "img" : "https://user-images.githubusercontent.com/32285482/42459983-765ec478-8362-11e8-94e4-b56b497ed3cd.png"
-// }// {
-//   "id": "2b",
-//   "id2": "2bd",
-//   "nombre": "Coca Cola Sin Azúcar",
-//   "title": "cocacolasinazucar",
-//   "description": "Coca Cola sin azúcar de 1,5L ",
-//   "precio": 7.90,
-//   "type" : "bebida",
-//   "detail" : "Coca Cola Sin Azúcar a S/ 7.90",
-//   "img" :"https://user-images.githubusercontent.com/32285482/42459977-73f94172-8362-11e8-8a3b-3ae08de28631.png"
-// },
+// template detalle item
+function templateDetail(array) {
+  containerDetail.empty();
+  array.forEach((element) => {
+    let templateView = `<div>
+    <p class="mb-0">1 ${element}</p>
+</div>`;
+    containerDetail.append(templateView);
+  });
+}

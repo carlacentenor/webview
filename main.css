@@ -1,6 +1,6 @@
 :root {
   --red: #F20030;
-  --darkred:#BB141A;
+  --darkred: #BB141A;
   --green: #009774;
   --darkgrey: #807673;
   --lightgrey: #A39D9B;
@@ -8,7 +8,7 @@
 }
 
 .title-section {
-  background-color:var(--darkred);
+  background-color: var(--darkred);
   color: white;
   font-size: 20px;
 }
@@ -33,12 +33,12 @@
   width: 35px;
 }
 
-.img-icon{
+.img-icon {
   height: 40px;
   width: 40px;
 }
 
-.num-total-delivery{
+.num-total-delivery {
   font-size: 20px;
   color: var(--green);
   font-weight: 600;
@@ -63,28 +63,28 @@
 }
 
 .btn-confirm {
-  background-color:var(--lightgrey);
+  background-color: var(--lightgrey);
   color: white;
   font-size: 20px;
   width: 100%;
   border: none;
-
 }
 
-.number-span{
+.number-span {
   color: var(--green);
   font-size: 24px;
 }
 
 .back {
-  color: var(--green)!important; 
+  color: var(--green) !important;
   font-weight: 600
 }
 
-.delivery{
+.delivery {
   color: var(--darkred);
   font-weight: 500;
 }
+
 .btn-confirm-pizza {
   background-color: var(--green);
   width: 100%;
@@ -93,7 +93,7 @@
   font-size: 20px;
 }
 
-.btn-active{
+.btn-active {
   background-color: var(--green);
 }
 
@@ -105,7 +105,6 @@
   font-size: 17px;
   font-weight: 500;
 }
-
 
 textarea {
   width: 100%;
@@ -121,8 +120,6 @@ textarea {
   padding: 1em;
 }
 
-
-.adicion-icon{
+.adicion-icon {
   width: 25px;
-  }
-  
+}

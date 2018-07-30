@@ -74,7 +74,61 @@
             <div class="col-10"> Bebidas</div>
           </div>
         </div>
-        <div class="container-bebidas row ">
+        <div class=" row ">
+            <div class="col-6 pt-2 ">
+                <div class="mb-2">
+                  <p class=" name-product text-center">Coca Cola Original de 1,5L a S/ 7.90 </p>
+                    
+                  <div class="row">
+                  <div class="col-4 offset-1 text-right">
+                  <button class=" decrement btn-subt" data-detail="Coca Cola Original a S/ 7.90"  data-name="Coca Cola Original" data-precio="7.90" data-type="bebida" id="cocacolaoriginaldecrement" >-</button>
+                </div>
+                <div class="col-2 text-center number-span" id=cocacolaoriginal >0</div>
+                <div class="col-4"><button class="increment btn-subt" data-detail="Coca Cola Original a S/ 7.90" data-name="Coca Cola Original" data-precio="7.90" data-type="bebida" id="cocacolaoriginalaument" >+</button>
+                
+                  </div>
+                 
+                </div> 
+                <div class="container mt-2">
+                <div class="form-check">
+                  <input type="checkbox" data-detail="Coca Cola Original a S/ 7.90" class="form-check-input" id="exampleCheck1cocacolaoriginal" value="Helada">
+                  <label class="form-check-label" for="exampleCheck1cocacolaoriginal" value="helada">Helada</label>
+                </div>
+                </div>
+              
+                  <div class="mt-2"><img class="img-fluid" src="https://user-images.githubusercontent.com/32285482/42459986-77d0209a-8362-11e8-96a4-eb98a46a37a7.png" ></div>
+                  
+                </div>
+                
+                
+              </div>
+              <div class="col-6 pt-2 ">
+                  <div class="mb-2">
+                    <p class=" name-product text-center">Inca Kola Original de 1,5L a S/ 7.90 </p>
+                      
+                    <div class="row">
+                    <div class="col-4 offset-1 text-right">
+                    <button class=" decrement btn-subt" data-detail="Inca Kola Original a S/ 7.90"  data-name="Inca Kola Original" data-precio="7.90" data-type="bebida" id="incacolaoriginaldecrement" >-</button>
+                  </div>
+                  <div class="col-2 text-center number-span" id=incacolaoriginal >0</div>
+                  <div class="col-4"><button class="increment btn-subt" data-detail="Inca Kola Original a S/ 7.90" data-name="Inca Kola Original" data-precio="7.90" data-type="bebida" id="incacolaoriginalaument" >+</button>
+                  
+                    </div>
+                   
+                  </div> 
+                  <div class="container mt-2">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1incacolaoriginal" value="Helada">
+                    <label class="form-check-label" for="exampleCheck1incacolaoriginal" value="helada">Helada</label>
+                  </div>
+                  </div>
+                
+                    <div class="mt-2"><img class="img-fluid" src="https://user-images.githubusercontent.com/32285482/42459979-7532accc-8362-11e8-868e-00f4e9cdc260.png" ></div>
+                    
+                  </div>
+                  
+                  
+                </div>
         </div>
 
       </div>
@@ -94,19 +148,19 @@
       <div>
         <p class="delivery">*Costo Delivery : S/ 3.90</p>
       </div>
+      <div class="info-temperature"></div>
       <div class="num-total-delivery">
         <span>Total : S/</span>
         <span id="total">0</span>
       </div>
     </section>
     <form id="preferencesForm">
-      <input id="resumen-pedido-big-total" type="hidden" name="detallepedidoBig">
-      <input id="resumen-pedido-family-total" type="hidden" name="detallepedidoFamily">
-      <input id="resumen-pedido-adicional-total" type="hidden" name="detallepedidoAdicional">
-      <input id="resumen-pedido-bebida-total" type="hidden" name="detallepedidoBebida">
-      <input type="hidden" name="userId">
-      <input type="hidden" name="blockName">
-      <button type="submit" class="btn-confirm text-center p-2"  id="config" disabled>Confirmar
+      <input id="resumen-pedido" type="hidden" name="detallepedido">
+      <input id="resumen-money-total" type="hidden" name="total">
+      <input id="resumen-temperatura" type="hidden" name="temperature" value="Sin Helar">
+      <input type="hidden" name="userId" value=userId>
+      <input type="hidden" name="blockName" value=blockName>
+      <button type="submit" class="btn-confirm text-center p-2" id="config" disabled>Confirmar
 
       </button>
     </form>
@@ -137,21 +191,21 @@
     <div class="p-2 text-center btn-confirm-pizza confirm-big-js">Confirmar </div>
   </section>
   <section class="family-pizza-section">
-    
+
     <div class="container">
-        <div class="mt-2 mb-2">
-            <a class="back">
-              <span>
-                <</span> Volver</a>
+      <div class="mt-2 mb-2">
+        <a class="back">
+          <span>
+            <</span> Volver</a>
+      </div>
+      <div class="title-section p-2">
+        <div class="row">
+          <div class="col-2">
+            <img class="img-icon" src="img/pizza.svg" alt="">
           </div>
-        <div class="title-section p-2">
-            <div class="row">
-              <div class="col-2">
-                <img class="img-icon" src="img/pizza.svg" alt="">
-              </div>
-              <div class="col-10"> Pizzas Familiares</div>
-            </div>
-          </div>
+          <div class="col-10"> Pizzas Familiares</div>
+        </div>
+      </div>
       <div class=" container">
         <div class="row container-bigfamily">
 
@@ -159,7 +213,7 @@
       </div>
     </div>
 
-    <div class="p-2 text-center btn-confirm-pizza confirm-family-js" >Confirmar </div>
+    <div class="p-2 text-center btn-confirm-pizza confirm-family-js">Confirmar </div>
   </section>
 
 

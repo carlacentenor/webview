@@ -3,7 +3,6 @@
   src: url('https://cdn.glitch.com/91e28cb2-d37c-4e4b-92be-c94d260d314c%2FKnockout-HTF69-FullLiteweight.otf?1531868956222') format("truetype");
 }
 
-
 :root {
   --red: #F20030;
   --darkred: #BB141A;
@@ -91,11 +90,7 @@
 }
 
 .delivery {
-<<<<<<< HEAD
-  color: var(--darkred);
-=======
   color: var(--green);
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
   font-weight: 500;
 }
 
@@ -111,7 +106,8 @@
   background-color: var(--green);
 }
 
-.container-bigpizza,.container-bigfamily {
+.container-bigpizza,
+.container-bigfamily {
   color: #898989;
 }
 
@@ -123,16 +119,13 @@
   text-transform: uppercase
 }
 
-<<<<<<< HEAD
-=======
-.subtitle-product{
+.subtitle-product {
   color: var(--darkgrey);
   font-size: 13px;
   position: relative;
   top: -8px;
 }
 
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
 textarea {
   width: 100%;
   height: auto;
@@ -141,18 +134,15 @@ textarea {
 }
 
 .detail-css {
-  margin: 1em;
-  padding: 1em;
+  margin: 5px;
+  padding: 0px 12px;
 }
 
-<<<<<<< HEAD
-.adicion-icon {
-  width: 25px;
-}
-=======
-.detail-css h5{
+.detail-css h5 {
   color: var(--darkred);
-  text-transform: uppercase
+  text-transform: uppercase;
+  font-family: "papafont";
+  font-size: 25px;
 }
 
 .line {
@@ -161,24 +151,30 @@ textarea {
   margin-bottom: 10px
 }
 
-.line-b{
+.line-b {
   border-bottom: 1px solid var(--darkgrey)
-  
 }
 
 .adicion-icon {
   width: 35px;
 }
 
-.detail-view{
+.detail-view {
   color: var(--darkgrey)
 }
 
-.subtitle-product-ab{
+.subtitle-product-ab {
   color: var(--darkgrey);
   font-size: 16px;
   position: relative;
   top: -8px;
 }
 
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
+.logo-papa {
+  width: 128px;
+}
+
+textarea {
+  border-radius: 5px;
+  border: 2px solid var(--green);
+}

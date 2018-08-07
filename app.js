@@ -8,7 +8,6 @@ const containerBig = $('.container-bigpizza');
 const containerFamily = $('.container-bigfamily');
 const containerAdicion = $('.container-adicional');
 const containerBebidas = $('.container-bebidas');
-const containerDetail = $('.detail-view');
 // botons add Pizzas big/family
 const btnBigPizza = $('#btn-big-pizza');
 const btnFamilyPizza = $('#btn-family-pizza');
@@ -18,7 +17,7 @@ const familyPizzaSection = $('.family-pizza-section');
 const containerPrincipal = $('.containerPrincipal');
 // btn back 
 const back = $('.back');
-
+const commentUser = $('#comment-user');
 //btn confirm pizzas
 const confirmBig = $('.confirm-big-js');
 const confirmFamily = $('.confirm-family-js');
@@ -38,7 +37,7 @@ $.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', functi
   let pizzaBig = data.products.pizzas.grandes;
   let pizzaFamily = data.products.pizzas.familiares;
   let adicionales = data.products.adicionales;
-
+  let drinks = data.products.bebidas;
   pizzaBig.forEach(element => {
     templateProducts(element, containerBig);
   });
@@ -46,52 +45,35 @@ $.getJSON('https://my-json-server.typicode.com/carlacentenor/webview/db', functi
     templateProducts(element, containerFamily);
   });
   adicionales.forEach(element => {
-    templateAdicional(element, containerAdicion);
+    templateProducts(element, containerAdicion);
   });
-<<<<<<< HEAD
-
-=======
   drinks.forEach(element => {
     templateBebidas(element, containerBebidas);
   });
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
 
 });
 
-$(document).on('click', '.form-check-input', function () {
-<<<<<<< HEAD
-  let tempe = $('#resumen-temperatura');
-  let value = $(this).context.checked;
-  if (value) {
-    iceDrink = 'Helada'
-    $(`.info-temperature`).text('*Bebidas Heladas');
-    tempe.val(`${iceDrink}`);
-  } else {
-    iceDrink = 'Sin Helar';
-    tempe.val("");
-    $(`.info-temperature`).text('*Bebidas Sin Helar')
-=======
- 
-  let value = $(this).context.checked;
-  if (value) {
-    iceDrink = 'Helada'
-    $(`.info-temperature`).text('*Bebida Helada');
-    let countBebida = JSON.parse(localStorage.arrayBebidas);
-    $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
-  } else {
-    iceDrink = 'Sin Helar';
-    let countBebida = JSON.parse(localStorage.arrayBebidas);
-    $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
-    $(`.info-temperature`).text('')
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
+commentUser.on('input', function () {
+  let messageUser = commentUser.val();
+  $('#resumen-comment').val(messageUser)
+})
 
-  }
-});
+// $(document).on('click', '.form-check-input', function () {
+//   let tempe = $('#resumen-temperatura');
+//   let value = $(this).context.checked;
+//   if (value) {
+//     iceDrink = 'Helada'
+//     $(`.info-temperature`).text('*Bebidas Heladas');
+//     tempe.val(`*Bebida ${iceDrink}`);
+//   } else {
+//     iceDrink = 'Sin Helar';
+//     tempe.val("");
+//     $(`.info-temperature`).text('*Bebidas Sin Helar')
 
-<<<<<<< HEAD
-=======
+//   }
+// });
 
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
+
 //Eventos + / -
 $(document).on('click', '.increment', function () {
   let price = $(this).data('precio');
@@ -165,11 +147,17 @@ confirmBig.on('click', function () {
   // $('#resumen-pedido-big-total').val(countPizzaBig.join("\n"))
 
 
-
+  const containerDetail = $('.detail-view');
+  containerDetail.empty();
   let countFinally = JSON.parse(localStorage.arrayFinaly);
   let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
   $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
-  templateDetail(countFinally);
+  countFinally.forEach(element => {
+    let templateView = `<div>
+    <p class="mb-0">1 ${element} </p>
+  </div>`;
+    containerDetail.append(templateView);
+  });
   if (countPizzaBig.length > 0) {
     $('#total-count-big').css('color', '#009774');
     btnBigPizza.addClass('btn-active');
@@ -178,12 +166,12 @@ confirmBig.on('click', function () {
     $('#total-count-big').css('color', '#009774');
     btnBigPizza.removeClass('btn-active');
   }
-
+  let totalSum = (parseFloat(localStorage.getItem('totalFinal')));
   if (countFinally.length > 0) {
     $('#config').removeAttr('disabled');
     $('#config').css('backgroundColor', '#009774');
   }
-  if (countFinally.length == 0) {
+  if (countFinally.length == 0 || totalSum <25) {
 
     $('#config').attr('disabled', true);
     $('#config').css('backgroundColor', '#A39D9B');
@@ -196,12 +184,17 @@ confirmFamily.on('click', function () {
   familyPizzaSection.hide();
   containerPrincipal.show();
   // $('#resumen-pedido-family-total').val(countPizzaFamily.join("\n"));
-
-
+  const containerDetail = $('.detail-view');
+  containerDetail.empty();
   let countFinally = JSON.parse(localStorage.arrayFinaly);
   let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
   $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
-  templateDetail(countFinally);
+  countFinally.forEach(element => {
+    let templateView = `<div>
+    <p class="mb-0">1 ${element} </p>
+  </div>`;
+    containerDetail.append(templateView);
+  });
   if (countPizzaFamily.length > 0) {
     $('#total-count-family').css('color', '#009774');
     btnFamilyPizza.addClass('btn-active');
@@ -209,12 +202,12 @@ confirmFamily.on('click', function () {
     $('#total-count-family').css('color', '#009774');
     btnFamilyPizza.removeClass('btn-active');
   }
-
-  if (countFinally.length > 0) {
+  let totalSum = (parseFloat(localStorage.getItem('totalFinal')));
+  if (countFinally.length > 0  || totalSum >=25) {
     $('#config').removeAttr('disabled');
     $('#config').css('backgroundColor', '#009774');
   }
-  if (countFinally.length == 0) {
+  if (countFinally.length == 0 || totalSum <25) {
 
     $('#config').attr('disabled', true);
     $('#config').css('backgroundColor', '#A39D9B');
@@ -230,82 +223,97 @@ let incrementTotal = (price, idNumberBox, name, type, detail) => {
   let number = $(`#${idNumberBox}`).text();
 
   number = parseInt(number) + 1;
-  $(`#${idNumberBox}`).text(number); // mostrando valores
-  let final = parseFloat(price) + parseFloat(totalPedido);
-  localStorage.setItem('totalFinal', final.toFixed(1));
-  let totalSum = (parseFloat(localStorage.getItem('totalFinal')));
-  let delivery = 3.90;
-  let sumDelivery = totalSum + delivery
-
-  showTotal.text(sumDelivery.toFixed(1));
-  // almacenando data de costo total
-  $('#resumen-money-total').val(sumDelivery.toFixed(1));
-  if (type == 'grande') {
-    arrayBigPizza.push(detail);
-    arrayFinaly.push(detail);
-    localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
-    localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
-  }
-  if (type == 'familiar') {
-    arrayFamilyPizza.push(detail);
-    arrayFinaly.push(detail);
-    localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
-    localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
-
-  }
-  if (type == 'adicional') {
-    arrayAdicional.push(detail);
-    arrayFinaly.push(detail);
-    localStorage.setItem('arrayAdicional', JSON.stringify(arrayAdicional));
-    localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
-    let countAdicional = JSON.parse(localStorage.arrayAdicional);
-    //  $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"));
-    const containerDetail = $('.detail-view');
-
-    let countFinally = JSON.parse(localStorage.arrayFinaly);
-    let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
-    $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
-    if (countFinally.length > 0) {
-      $('#config').removeAttr('disabled');
-      $('#config').css('backgroundColor', '#009774');
+  console.log(number)
+  if(number<=10){
+    $(`#${idNumberBox}`).text(number); // mostrando valores
+    let final = parseFloat(price) + parseFloat(totalPedido);
+    localStorage.setItem('totalFinal', final.toFixed(1));
+    let totalSum = (parseFloat(localStorage.getItem('totalFinal')));
+    let delivery = 3.90;
+    let sumDelivery = totalSum + delivery
+  
+    showTotal.text(sumDelivery.toFixed(1));
+    // almacenando data de costo total
+    $('#resumen-money-total').val(sumDelivery.toFixed(1));
+    if (type == 'grande') {
+      arrayBigPizza.push(detail);
+      arrayFinaly.push(detail);
+      localStorage.setItem('arrayBigPizza', JSON.stringify(arrayBigPizza));
+      localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
     }
-    templateDetail(countFinally);
-  }
-  if (type == 'bebida') {
-    arrayBebidas.push(detail);
-    arrayFinaly.push(detail);
-    localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
-    localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
-    let countBebida = JSON.parse(localStorage.arrayBebidas);
-<<<<<<< HEAD
-    // $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
-    const containerDetail = $('.detail-view');
-
-=======
-    $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
-    const containerDetail = $('.detail-view');
-    containerDetail.empty();
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
-    console.log(iceDrink)
-    let countFinally = JSON.parse(localStorage.arrayFinaly);
-    let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
-    $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
-    if (countFinally.length > 0) {
-      $('#config').removeAttr('disabled');
-      $('#config').css('backgroundColor', '#009774');
+    if (type == 'familiar') {
+      arrayFamilyPizza.push(detail);
+      arrayFinaly.push(detail);
+      localStorage.setItem('arrayFamilyPizza', JSON.stringify(arrayFamilyPizza));
+      localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
+  
     }
+    if (type == 'adicional') {
+      arrayAdicional.push(detail);
+      arrayFinaly.push(detail);
+      localStorage.setItem('arrayAdicional', JSON.stringify(arrayAdicional));
+      localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
+      let countAdicional = JSON.parse(localStorage.arrayAdicional);
+      //  $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"));
+      const containerDetail = $('.detail-view');
+      containerDetail.empty();
+      let countFinally = JSON.parse(localStorage.arrayFinaly);
+      let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
+      $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
+      if (countFinally.length > 0 ) {
+        $('#config').removeAttr('disabled');
+        $('#config').css('backgroundColor', '#009774');
+      }
+      if (totalSum <25) {
 
-<<<<<<< HEAD
-    templateDetail(countFinally);
-=======
-    countFinally.forEach((element,index) => {
-      let templateView = `<div>
-      <p class="mb-0">1 ${element}</p>
-  </div>`;
-      containerDetail.append(templateView);
-    });
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
+        $('#config').attr('disabled', true);
+        $('#config').css('backgroundColor', '#A39D9B');
+      }else{
+        $('#config').removeAttr('disabled');
+        $('#config').css('backgroundColor', '#009774');
+      }
+      countFinally.forEach(element => {
+        let templateView = `<div>
+      <p class="mb-0">1 ${element} </p>
+    </div>`;
+        containerDetail.append(templateView);
+      });
+    }
+    if (type == 'bebida') {
+      arrayBebidas.push(detail);
+      arrayFinaly.push(detail);
+      localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
+      localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
+      let countBebida = JSON.parse(localStorage.arrayBebidas);
+      // $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
+      const containerDetail = $('.detail-view');
+      containerDetail.empty();
+     
+      let countFinally = JSON.parse(localStorage.arrayFinaly);
+      let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
+      $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
+      if (countFinally.length > 0 ) {
+        $('#config').removeAttr('disabled');
+        $('#config').css('backgroundColor', '#009774');
+      }
+      if (totalSum <25) {
+
+        $('#config').attr('disabled', true);
+        $('#config').css('backgroundColor', '#A39D9B');
+      }else{
+        $('#config').removeAttr('disabled');
+        $('#config').css('backgroundColor', '#009774');
+      }
+  
+      countFinally.forEach((element, index) => {
+        let templateView = `<div>
+        <p class="mb-0">1 ${element}</p>
+    </div>`;
+        containerDetail.append(templateView);
+      });
+    }
   }
+ 
 
 };
 
@@ -319,13 +327,6 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
     let final = parseFloat(totalPedido) - parseFloat(price);
     localStorage.setItem('totalFinal', final.toFixed(1));
     showTotal.text(localStorage.getItem('totalFinal'));
-    let totalSum = (parseFloat(localStorage.getItem('totalFinal')));
-    let delivery = 3.90;
-    let sumDelivery = totalSum + delivery
-
-    showTotal.text(sumDelivery.toFixed(1));
-    // almacenando data de costo total
-    $('#resumen-money-total').val(sumDelivery.toFixed(1));
 
 
     let totalSum = (parseFloat(localStorage.getItem('totalFinal')));
@@ -364,17 +365,22 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
       let countAdicional = JSON.parse(localStorage.arrayAdicional);
       // $('#resumen-pedido-adicional-total').val(countAdicional.join("\n"));
-
-
+      const containerDetail = $('.detail-view');
+      containerDetail.empty();
       let countFinally = JSON.parse(localStorage.arrayFinaly);
       let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
       $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
-      if (countFinally.length == 0) {
+      if (countFinally.length == 0 || totalSum <25) {
 
         $('#config').attr('disabled', true);
         $('#config').css('backgroundColor', '#A39D9B');
       }
-      templateDetail(countFinally);
+      countFinally.forEach(element => {
+        let templateView = `<div>
+      <p class="mb-0">1 ${element} </p>
+    </div>`;
+        containerDetail.append(templateView);
+      });
 
     }
     if (type == 'bebida') {
@@ -384,36 +390,23 @@ let decrementTotal = (price, idNumberBox, name, type, detail) => {
       arrayFinaly.splice(indexDetail, 1);
       localStorage.setItem('arrayBebidas', JSON.stringify(arrayBebidas));
       localStorage.setItem('arrayFinaly', JSON.stringify(arrayFinaly));
-<<<<<<< HEAD
       let pedidoFinal = JSON.parse(localStorage.arrayFinaly);
       $('#resumen-pedido').val(`${pedidoFinal.join("\n")}`);
       //  $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
-
-
-=======
-      let countBebida = JSON.parse(localStorage.arrayBebidas);
-      
-      $('#resumen-pedido-bebida-total').val(`${countBebida.join("\n")} ${iceDrink}`);
       const containerDetail = $('.detail-view');
       containerDetail.empty();
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
       let countFinally = JSON.parse(localStorage.arrayFinaly);
-      if (countFinally.length == 0) {
+      if (countFinally.length == 0 || totalSum <25) {
 
         $('#config').attr('disabled', true);
         $('#config').css('backgroundColor', '#A39D9B');
       }
-<<<<<<< HEAD
-      templateDetail(countFinally);
-
-=======
       countFinally.forEach(element => {
         let templateView = `<div>
         <p class="mb-0">1 ${element}  </p>
     </div>`;
         containerDetail.append(templateView);
       });
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
     }
   }
 };
@@ -451,8 +444,8 @@ let templateProducts = (element, container) => {
 let templateBebidas = (element, container) => {
   let template = ` <div class="col-6 pt-2 ">
   <div class="mb-2">
-    <p class=" name-product text-center mb-0">${element.nombre} 1,5L </p>
-    <p class="f14 text-center subtitle-product-ab mb-0"> S/ ${element.precio}0</p>
+    <p class=" name-product text-center">${element.nombre} de 1,5L a S/${element.precio}0 </p>
+      
     <div class="row">
     <div class="col-4 offset-1 text-right">
     <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" ><i class="fas fa-minus"></i></button>
@@ -463,57 +456,11 @@ let templateBebidas = (element, container) => {
     </div>
    
   </div> 
-  <div class="container mt-2">
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1${element.title}" value="Helada">
-    <label class="form-check-label" for="exampleCheck1${element.title}" value="helada">Helada</label>
-  </div>
-  </div>
-
-    <div class="mt-2"><img class="img-fluid" src="${element.img}" ></div>
+      <div class="mt-2"><img class="img-fluid" src="${element.img}" ></div>
     
   </div>
   
   
 </div>`;
   container.append(template);
-}
-
-<<<<<<< HEAD
-// template detalle item
-function templateDetail(array) {
-  containerDetail.empty();
-  array.forEach((element) => {
-    let templateView = `<div>
-    <p class="mb-0">1 ${element}</p>
-</div>`;
-    containerDetail.append(templateView);
-  });
-=======
-
-// Template Bebidas
-let templateAdicional = (element, container) => {
-  let template = ` <div class="col-6 pt-2 ">
-  <div class="mb-2">
-    <p class="mb-0 name-product text-center">${element.nombre}  </p>
-    
-    <p class="f14 text-center subtitle-product-ab mb-0">${element.detail}</p>
-    <div class="row">
-    <div class="col-4 offset-1 text-right">
-    <button class=" decrement btn-subt" data-detail="${element.detail}"  data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}decrement" ><i class="fas fa-minus"></i></button>
-  </div>
-  <div class="col-2 text-center number-span" id=${element.title} >0</div>
-  <div class="col-4"><button class="increment btn-subt" data-detail="${element.detail}" data-name="${element.nombre}" data-precio=${element.precio} data-type=${element.type} id="${element.title}aument" ><i class="fas fa-plus"></i></button>
-  
-    </div>
-   
-  </div> 
-    <div class="mt-2"><img class="img-fluid" src="${element.img}" ></div>
-    
-  </div>
-  
-  
-</div>`;
-  container.append(template);
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
 }

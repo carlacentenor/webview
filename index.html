@@ -7,13 +7,18 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="main.css">
   <title>Papa John's</title>
 </head>
 
 <body>
   <main class="containerPrincipal">
+    <div class="text-center">
+      <img src="https://cdn.glitch.com/91e28cb2-d37c-4e4b-92be-c94d260d314c%2Flogo-small-no-text-papa-johns.png?1531868931842"
+        alt="" class="logo-papa" />
+    </div>
     <section class="container-fluid ">
 
       <div class="title-section p-2">
@@ -26,12 +31,11 @@
 
 
       </div>
-      <div class="container mb-4 mt-3">
+      <div class="container ">
         <div class="row pt-2 pb-2 pl-0 pr-2 line-b">
-
           <div class="col-9 ">
-           <p class="name-product mb-0"> Pizzas Grandes </p>
-           <p class="mb-0 subtitle-product">Deliciosa pizza de 8 slices desde S/40.90 </p>
+            <p class="name-product mb-0"> Pizzas Grandes </p>
+            <p class="mb-0 subtitle-product">Deliciosa pizza de 8 slices desde S/40.90 </p>
           </div>
           <div class="col-3 text-right pr-0">
             <span id="total-count-big" class="number-span">0</span>
@@ -78,73 +82,91 @@
           </div>
         </div>
         <div class=" row ">
-            <div class="col-6 pt-2 ">
-                <div class="mb-2">
-                  <p class=" name-product text-center">Coca Cola Original de 1,5L a S/ 7.90 </p>
-                    
-                  <div class="row">
-                  <div class="col-4 offset-1 text-right">
-                  <button class=" decrement btn-subt" data-detail="Coca Cola Original a S/ 7.90"  data-name="Coca Cola Original" data-precio="7.90" data-type="bebida" id="cocacolaoriginaldecrement" >-</button>
+          <div class="col-6 pt-2 ">
+            <div class="mb-2">
+              <p class=" name-product text-center">Coca Cola Original de 1,5L a S/ 7.90 </p>
+
+              <div class="row">
+                <div class="col-4 offset-1 text-right">
+                  <button class=" decrement btn-subt" data-detail="Coca Cola Original a S/ 7.90" data-name="Coca Cola Original" data-precio="7.90"
+                    data-type="bebida" id="cocacolaoriginaldecrement">
+                    <i class="fas fa-minus"></i>
+                  </button>
                 </div>
-                <div class="col-2 text-center number-span" id=cocacolaoriginal >0</div>
-                <div class="col-4"><button class="increment btn-subt" data-detail="Coca Cola Original a S/ 7.90" data-name="Coca Cola Original" data-precio="7.90" data-type="bebida" id="cocacolaoriginalaument" >+</button>
-                
-                  </div>
-                 
-                </div> 
-                <div class="container mt-2">
-                <div class="form-check">
+                <div class="col-2 text-center number-span" id=cocacolaoriginal>0</div>
+                <div class="col-4">
+                  <button class="increment btn-subt" data-detail="Coca Cola Original a S/ 7.90" data-name="Coca Cola Original"
+                    data-precio="7.90" data-type="bebida" id="cocacolaoriginalaument">
+                    <i class="fas fa-plus"></i>
+                  </button>
+
+                </div>
+
+              </div>
+              <div class="container mt-2">
+                <!-- <div class="form-check">
                   <input type="checkbox" data-detail="Coca Cola Original a S/ 7.90" class="form-check-input" id="exampleCheck1cocacolaoriginal" value="Helada">
                   <label class="form-check-label" for="exampleCheck1cocacolaoriginal" value="helada">Helada</label>
-                </div>
-                </div>
-              
-                  <div class="mt-2"><img class="img-fluid" src="https://user-images.githubusercontent.com/32285482/42459986-77d0209a-8362-11e8-96a4-eb98a46a37a7.png" ></div>
-                  
-                </div>
-                
-                
+                </div> -->
               </div>
-              <div class="col-6 pt-2 ">
-                  <div class="mb-2">
-                    <p class=" name-product text-center">Inca Kola Original de 1,5L a S/ 7.90 </p>
-                      
-                    <div class="row">
-                    <div class="col-4 offset-1 text-right">
-                    <button class=" decrement btn-subt" data-detail="Inca Kola Original a S/ 7.90"  data-name="Inca Kola Original" data-precio="7.90" data-type="bebida" id="incacolaoriginaldecrement" >-</button>
-                  </div>
-                  <div class="col-2 text-center number-span" id=incacolaoriginal >0</div>
-                  <div class="col-4"><button class="increment btn-subt" data-detail="Inca Kola Original a S/ 7.90" data-name="Inca Kola Original" data-precio="7.90" data-type="bebida" id="incacolaoriginalaument" >+</button>
-                  
-                    </div>
-                   
-                  </div> 
-                  <div class="container mt-2">
-                  <div class="form-check">
+
+              <div class="mt-2">
+                <img class="img-fluid" src="https://user-images.githubusercontent.com/32285482/42459986-77d0209a-8362-11e8-96a4-eb98a46a37a7.png">
+              </div>
+
+            </div>
+
+
+          </div>
+          <div class="col-6 pt-2 ">
+            <div class="mb-2">
+              <p class=" name-product text-center">Inca Kola Original de 1,5L a S/ 7.90 </p>
+
+              <div class="row">
+                <div class="col-4 offset-1 text-right">
+                  <button class=" decrement btn-subt" data-detail="Inca Kola Original a S/ 7.90" data-name="Inca Kola Original" data-precio="7.90"
+                    data-type="bebida" id="incacolaoriginaldecrement">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <div class="col-2 text-center number-span" id=incacolaoriginal>0</div>
+                <div class="col-4">
+                  <button class="increment btn-subt" data-detail="Inca Kola Original a S/ 7.90" data-name="Inca Kola Original"
+                    data-precio="7.90" data-type="bebida" id="incacolaoriginalaument">
+                    <i class="fas fa-plus"></i>
+                  </button>
+
+                </div>
+
+              </div>
+              <div class="container mt-2">
+                <!-- <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1incacolaoriginal" value="Helada">
                     <label class="form-check-label" for="exampleCheck1incacolaoriginal" value="helada">Helada</label>
-                  </div>
-                  </div>
-                
-                    <div class="mt-2"><img class="img-fluid" src="https://user-images.githubusercontent.com/32285482/42459979-7532accc-8362-11e8-868e-00f4e9cdc260.png" ></div>
-                    
-                  </div>
-                  
-                  
-                </div>
+                  </div> -->
+              </div>
+
+              <div class="mt-2">
+                <img class="img-fluid" src="https://user-images.githubusercontent.com/32285482/42459979-7532accc-8362-11e8-868e-00f4e9cdc260.png">
+              </div>
+
+            </div>
+
+
+          </div>
         </div>
 
       </div>
 
     </section>
 
-
-
-
-
-
-
     <!-- Section Confirmar resumen-->
+    <section class="detail-css">
+      <h5 class="mb-0">Comentarios</h5>
+      <div class="line"></div>
+      <textarea id="comment-user" class="p-2" cols="30" rows="4" placeholder="Usa este espacio para dejar detalles sobre tu pedido, ejemplo: una gaseosa helada y otra sin helar."></textarea>
+
+    </section>
     <section class="detail-css">
       <h5 class="mb-0">Detalle de Pedido</h5>
       <div class="line"></div>
@@ -152,7 +174,7 @@
       <div>
         <p class="delivery">*Costo Delivery : S/ 3.90</p>
       </div>
-      <div class="info-temperature"></div>
+      <!-- <div class="info-temperature"></div> -->
       <div class="num-total-delivery">
         <span>Total : S/</span>
         <span id="total">0</span>
@@ -161,7 +183,7 @@
     <form id="preferencesForm">
       <input id="resumen-pedido" type="hidden" name="detallepedido">
       <input id="resumen-money-total" type="hidden" name="total">
-      <input id="resumen-temperatura" type="hidden" name="temperature" value="Sin Helar">
+      <input id="resumen-comment" type="hidden" name="comment">
       <input type="hidden" name="userId" value=userId>
       <input type="hidden" name="blockName" value=blockName>
       <button type="submit" class="btn-confirm text-center p-2" id="config" disabled>Confirmar
@@ -175,52 +197,42 @@
     <div class="container">
       <div class="mt-2 mb-2">
         <a class="back">
-          <span>
-            <</span> Volver</a>
+          <span>&lt;</span> Volver</a>
       </div>
       <div class="title-section p-2">
         <div class="row">
           <div class="col-2">
-            <img class="img-icon" src="img/pizza.svg" alt="">
+            <img src="https://user-images.githubusercontent.com/32285482/42764450-426034d0-88db-11e8-83c1-30a752f4d596.png"
+              alt="" class="img-icon" />
           </div>
           <div class="col-10"> Pizzas Grandes</div>
         </div>
       </div>
-
     </div>
-
-    <div class=" container">
+    <div class="container">
       <div class="row container-bigpizza"></div>
     </div>
     <div class="p-2 text-center btn-confirm-pizza confirm-big-js">Confirmar </div>
   </section>
   <section class="family-pizza-section">
-
     <div class="container">
       <div class="mt-2 mb-2">
         <a class="back">
-          <span>
-            <</span> Volver</a>
+          <span>&lt;</span> Volver</a>
       </div>
       <div class="title-section p-2">
         <div class="row">
           <div class="col-2">
-            <img class="img-icon" src="img/pizza.svg" alt="">
+            <img src="https://user-images.githubusercontent.com/32285482/42764450-426034d0-88db-11e8-83c1-30a752f4d596.png"
+              alt="" class="img-icon" />
           </div>
-<<<<<<< HEAD
           <div class="col-10"> Pizzas Familiares</div>
         </div>
       </div>
-      <div class=" container">
-=======
-      <div class="">
->>>>>>> 3d194d211f46e6b7091bd773e324f2b0f45d071c
-        <div class="row container-bigfamily">
-
-        </div>
+      <div>
+        <div class="row container-bigfamily"></div>
       </div>
     </div>
-
     <div class="p-2 text-center btn-confirm-pizza confirm-family-js">Confirmar </div>
   </section>
 

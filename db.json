@@ -46,15 +46,15 @@
             "img" : "https://user-images.githubusercontent.com/32285482/42459630-ad9755f0-8361-11e8-9c77-eddf65976de6.jpg"
           },
           {
-            "id": "5g",
-            "id2": "5gd",
-            "nombre": "Hawaiian Chicken BBQ",
-            "title": "hawaiianchickenbbqgrande",
-            "description": "Deliciosa base de salsa BBQ, pollo, tocino, cebolla blanca, piña y queso mozzarella",
+            "id": "7g",
+            "id2": "7gd",
+            "nombre": "The Works",
+            "title": "theworksgrande",
+            "description": "Pepperoni, salchicha italiana, jamón, pimientos verdes, cebolla blanca, champiñones, aceitunas negras y queso mozzarella",
             "precio": 55.90,
             "type" : "grande",
-            "detail" : "Pizza Hawaiian Chicken BBQ Grande a S/55.90",
-            "img":"https://user-images.githubusercontent.com/32285482/42459632-af46770a-8361-11e8-89df-947b3b2fc9ca.jpg"
+            "detail" : "Pizza The Works Grande a S/55.90",
+            "img": "https://user-images.githubusercontent.com/32285482/42459654-b9595fa0-8361-11e8-94d8-7f25054fa1af.jpg"
           },
           {
             "id": "6g",
@@ -68,15 +68,15 @@
             "img":"https://user-images.githubusercontent.com/32285482/42459639-b22056c6-8361-11e8-8c2f-032bc0ac92ac.jpg"
           },
           {
-            "id": "7g",
-            "id2": "7gd",
-            "nombre": "The Works",
-            "title": "theworksgrande",
-            "description": "Pepperoni, salchicha italiana, jamón, pimientos verdes, cebolla blanca, champiñones, aceitunas negras y queso mozzarella",
+            "id": "5g",
+            "id2": "5gd",
+            "nombre": "Hawaiian Chicken BBQ",
+            "title": "hawaiianchickenbbqgrande",
+            "description": "Deliciosa base de salsa BBQ, pollo, tocino, cebolla blanca, piña y queso mozzarella",
             "precio": 55.90,
             "type" : "grande",
-            "detail" : "Pizza The Works Grande a S/55.90",
-            "img": "https://user-images.githubusercontent.com/32285482/42459654-b9595fa0-8361-11e8-94d8-7f25054fa1af.jpg"
+            "detail" : "Pizza Hawaiian Chicken BBQ Grande a S/55.90",
+            "img":"https://user-images.githubusercontent.com/32285482/42459632-af46770a-8361-11e8-89df-947b3b2fc9ca.jpg"
           }
 
         ],

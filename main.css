@@ -145,6 +145,8 @@ textarea {
   font-size: 25px;
 }
 
+
+
 .line {
   height: 3px;
   background-color: var(--darkred);
@@ -178,3 +180,4 @@ textarea {
   border-radius: 5px;
   border: 2px solid var(--green);
 }
+
